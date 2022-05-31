@@ -1,3 +1,1 @@
-pane	0	1	1	:*	1	Nekos-MacBook-Air.local	:/Users/nekoj/.tmux/plugins/palenight-tmux/theme	1	nvim	:nvim /Users/nekoj/Desktop/todo.txt
-window	0	1	:nvim	1	:*	92ad,120x104,0,0,0	:
-state	0	
+tmux_resurrect_20220531T161528.txt
