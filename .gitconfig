@@ -1,0 +1,36 @@
+[user]
+	email = mpjuers@indiana.edu
+	name = Mark Juers
+[core]
+	excludesfile = /Users/mpjuers/.gitignore_global
+	editor = vim
+[alias]
+	tree = log --branches --remotes --tags --graph --decorate --pretty=oneline --abbrev-commit
+	tracked = !"git ls-tree -r \"$1\" --name-only #"
+    prompthelp = !"cat $HOME/.gitaliases/git-prompthelp.txt"
+	unstage = reset HEAD
+	staged = diff --staged
+	wip = reset HEAD~1
+	ctags = !.git/hooks/ctags
+[push]
+	default = simple
+[mergetool]
+	keepBackup = false
+	prompt = false
+[rebase]
+	autosquash = true
+[init]
+	templatedir = ~/.git_template
+[pull]
+	rebase = preserve
+[filter "dropoutput_nb"]
+    clean = mathematica-notebook-filter
+    smudge = cat
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[merge]
+	conflictstyle = diff3
+	tool = vimdiff

@@ -1,0 +1,9 @@
+#!/bin/bash
+# execute commands in or change to root directory
+
+top=$(git rev-parse --show-toplevel)
+if [[ "$#" == 0 ]]; then
+    echo "$top"
+else
+    git -C "$top" "$@"
+fi

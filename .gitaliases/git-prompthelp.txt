@@ -1,0 +1,20 @@
+__fish_git_prompt_showdirtystate
+  dirtystate          unstaged changes (*)
+  stagedstate         staged changes   (+)
+  invalidstate        HEAD invalid     (#, colored as stagedstate)
+
+__fish_git_prompt_showstashstate
+  stashstate          stashed changes  ($)
+
+__fish_git_prompt_showuntrackedfiles
+  untrackedfiles      untracked files  (%)
+
+__fish_git_prompt_showupstream  (all colored as upstream)
+  upstream_equal      Branch matches upstream              (=)
+  upstream_behind     Upstream has more commits            (<)
+  upstream_ahead      Branch has more commits              (>)
+  upstream_diverged   Upstream and branch have new commits (<>)
+
+__fish_git_prompt_show_informative_status
+  (see also the flags for showdirtystate and showuntrackedfiles, above)
+  cleanstate          Working directory has no changes (✔)

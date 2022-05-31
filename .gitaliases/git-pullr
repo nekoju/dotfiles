@@ -1,0 +1,30 @@
+#!/bin/bash
+# fetches the designated remote and rebases, respecting prior merges
+# usage git pullr <remote> <branch> or git pullr <branch>
+# remote defaults to branch.<branch>.remote and branch defaults current branch
+
+if [[ "$#" -eq 2 ]]; then
+    remote=$1
+    branch=$2
+else
+    if [[ "$#" -lt 2 ]]; then
+
+        if [[ "$#" -eq 0 ]]; then
+            branch=$(git branch | grep \* | cut -d ' ' -f2)
+        elif [[ "$#" -eq 1 ]]; then
+            branch=$1
+        fi
+
+        remote=$(git config --list | \
+            sed -n 's/branch\.'"$branch"'\.remote=//p')
+    fi
+fi
+
+if [[ -z "$remote" ]]; then
+    echo "Can't fetch, remote empty"
+else
+    git fetch "$remote" 
+    echo "rebasing ${branch} onto "${remote}/${branch}
+    git rebase -p "$remote"/"$branch"
+fi
+

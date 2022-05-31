@@ -1,0 +1,11 @@
+#!/bin/bash
+# call neovim-remote with git mergetool
+if [[ -n ${NVIM_LISTEN_ADDRESS+x} ]]; then
+    nvr -s --remote-tab 
+fi
+LASTARG=$(($#-1))
+ARGS=${@:1:$LASTARG}
+MERGE=${@: -1}
+MERGETEMP=$(mktemp "$TMPDIR""${MERGE##*/}".tmp.XXXXXX)
+ln -f "$MERGE" "$MERGETEMP"
+nvr -d -s ${ARGS[@]} "$MERGETEMP" -c 'wincmd J | wincmd ='

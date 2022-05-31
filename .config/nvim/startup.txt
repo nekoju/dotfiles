@@ -1,0 +1,123 @@
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.041  000.041: --- NVIM STARTING ---
+002.784  002.743: locale set
+004.342  001.558: inits 1
+004.418  000.076: window checked
+004.900  000.482: parsing arguments
+007.740  002.839: expanding arguments
+007.922  000.182: inits 2
+008.885  000.964: init highlight
+008.896  000.010: waiting for UI
+017.006  008.110: done waiting for UI
+017.038  000.032: initialized screen early for UI
+024.801  006.074  006.074: sourcing /Users/mpjuers/.config/nvim/autoload/plug.vim
+067.988  000.109  000.109: sourcing /Users/mpjuers/.config/nvim/plugged/csv.vim/ftdetect/csv.vim
+068.775  000.244  000.244: sourcing /Users/mpjuers/.config/nvim/plugged/vim-fish/ftdetect/fish.vim
+069.457  000.136  000.136: sourcing /Users/mpjuers/.config/nvim/plugged/vim-json/ftdetect/json.vim
+071.179  001.150  001.150: sourcing /Users/mpjuers/.config/nvim/plugged/Nvim-R/ftdetect/r.vim
+072.327  000.314  000.314: sourcing /Users/mpjuers/.config/nvim/plugged/vimtex/ftdetect/tex.vim
+073.399  000.078  000.078: sourcing /Users/mpjuers/.config/nvim/plugged/vim-fugitive/ftdetect/fugitive.vim
+075.712  033.396  031.364: sourcing /Users/mpjuers/bin/share/nvim/runtime/filetype.vim
+078.354  000.190  000.190: sourcing /Users/mpjuers/bin/share/nvim/runtime/ftplugin.vim
+081.065  000.235  000.235: sourcing /Users/mpjuers/bin/share/nvim/runtime/indent.vim
+087.600  001.673  001.673: sourcing /Users/mpjuers/bin/share/nvim/runtime/syntax/syncolor.vim
+089.224  005.151  003.478: sourcing /Users/mpjuers/bin/share/nvim/runtime/syntax/synload.vim
+089.681  007.126  001.976: sourcing /Users/mpjuers/bin/share/nvim/runtime/syntax/syntax.vim
+093.641  000.091  000.091: sourcing /Users/mpjuers/bin/share/nvim/runtime/filetype.vim
+096.328  000.174  000.174: sourcing /Users/mpjuers/bin/share/nvim/runtime/ftplugin.vim
+099.643  001.217  001.217: sourcing /Users/mpjuers/bin/share/nvim/runtime/syntax/nosyntax.vim
+102.770  000.667  000.667: sourcing /Users/mpjuers/bin/share/nvim/runtime/syntax/syncolor.vim
+104.313  003.497  002.831: sourcing /Users/mpjuers/bin/share/nvim/runtime/syntax/synload.vim
+104.598  006.599  001.885: sourcing /Users/mpjuers/bin/share/nvim/runtime/syntax/syntax.vim
+106.417  001.081  001.081: sourcing /Users/mpjuers/bin/share/nvim/runtime/syntax/nosyntax.vim
+109.942  000.565  000.565: sourcing /Users/mpjuers/bin/share/nvim/runtime/syntax/syncolor.vim
+111.360  003.536  002.971: sourcing /Users/mpjuers/bin/share/nvim/runtime/syntax/synload.vim
+111.676  006.724  002.107: sourcing /Users/mpjuers/bin/share/nvim/runtime/syntax/syntax.vim
+126.051  000.563  000.563: sourcing /Users/mpjuers/bin/share/nvim/runtime/syntax/syncolor.vim
+129.414  000.377  000.377: sourcing /Users/mpjuers/bin/share/nvim/runtime/syntax/syncolor.vim
+131.651  000.372  000.372: sourcing /Users/mpjuers/bin/share/nvim/runtime/syntax/syncolor.vim
+139.310  026.934  025.622: sourcing /Users/mpjuers/.config/nvim/plugged/nord.nvim/colors/nord.vim
+168.652  150.429  062.886: sourcing /Users/mpjuers/.config/nvim/init.vim
+168.718  001.251: sourcing vimrc file(s)
+172.306  000.548  000.548: sourcing /Users/mpjuers/bin/share/nvim/runtime/plugin/matchparen.vim
+174.673  001.042  001.042: sourcing /Users/mpjuers/.config/nvim/plugged/vim-matchup/autoload/matchup.vim
+175.544  000.357  000.357: sourcing /Users/mpjuers/.config/nvim/plugged/vim-matchup/autoload/matchup/perf.vim
+178.113  001.170  001.170: sourcing /Users/mpjuers/.config/nvim/plugged/vim-matchup/autoload/matchup/loader.vim
+180.900  001.942  001.942: sourcing /Users/mpjuers/.config/nvim/plugged/vim-matchup/autoload/matchup/matchparen.vim
+189.499  018.803  013.744: sourcing /Users/mpjuers/.config/nvim/plugged/vim-matchup/plugin/matchup.vim
+190.888  000.704  000.704: sourcing /Users/mpjuers/.config/nvim/plugged/csv.vim/plugin/csv.vim
+192.437  000.402  000.402: sourcing /Users/mpjuers/.config/nvim/plugged/vim-numbertoggle/plugin/number_toggle.vim
+195.157  002.047  002.047: sourcing /Users/mpjuers/.config/nvim/plugged/fzf/plugin/fzf.vim
+198.467  002.519  002.519: sourcing /Users/mpjuers/.config/nvim/plugged/fzf.vim/plugin/fzf.vim
+200.762  001.299  001.299: sourcing /Users/mpjuers/.config/nvim/plugged/FastFold/plugin/fastfold.vim
+202.590  000.995  000.995: sourcing /Users/mpjuers/.config/nvim/plugged/showcontext/plugin/showcontext.vim
+203.734  000.288  000.288: sourcing /Users/mpjuers/.config/nvim/plugged/nvim-lspconfig/plugin/lspconfig.vim
+205.515  000.445  000.445: sourcing /Users/mpjuers/.config/nvim/plugged/vim-indent-guides/autoload/indent_guides.vim
+206.437  001.949  001.504: sourcing /Users/mpjuers/.config/nvim/plugged/vim-indent-guides/plugin/indent_guides.vim
+208.172  000.830  000.830: sourcing /Users/mpjuers/.config/nvim/plugged/vim-closer/plugin/closer.vim
+209.253  000.095  000.095: sourcing /Users/mpjuers/.config/nvim/plugged/SimpylFold/plugin/SimpylFold.vim
+210.594  000.649  000.649: sourcing /Users/mpjuers/.config/nvim/plugged/vim-commentary/plugin/commentary.vim
+214.687  003.254  003.254: sourcing /Users/mpjuers/.config/nvim/plugged/vim-fugitive/plugin/fugitive.vim
+216.924  001.242  001.242: sourcing /Users/mpjuers/.config/nvim/plugged/vim-surround/plugin/surround.vim
+218.189  000.069  000.069: sourcing /Users/mpjuers/.config/nvim/plugged/vim-pandoc-syntax/plugin/pandoc-syntax-check.vim
+222.091  000.709  000.709: sourcing /Users/mpjuers/.config/nvim/plugged/AutoComplPop/autoload/acp.vim
+222.776  003.908  003.199: sourcing /Users/mpjuers/.config/nvim/plugged/AutoComplPop/plugin/acp.vim
+223.488  000.150  000.150: sourcing /Users/mpjuers/.config/nvim/plugged/vim-windowswap/plugin/WindowSwap.vim
+226.481  000.215  000.215: sourcing /Users/mpjuers/.config/nvim/plugged/ale/autoload/ale/events.vim
+227.165  003.148  002.934: sourcing /Users/mpjuers/.config/nvim/plugged/ale/plugin/ale.vim
+231.039  000.777  000.777: sourcing /Users/mpjuers/bin/share/nvim/runtime/plugin/gzip.vim
+231.405  000.078  000.078: sourcing /Users/mpjuers/bin/share/nvim/runtime/plugin/health.vim
+232.040  000.460  000.460: sourcing /Users/mpjuers/bin/share/nvim/runtime/plugin/man.vim
+232.267  000.057  000.057: sourcing /Users/mpjuers/bin/share/nvim/runtime/plugin/matchit.vim
+232.459  000.060  000.060: sourcing /Users/mpjuers/bin/share/nvim/runtime/plugin/matchparen.vim
+234.218  001.583  001.583: sourcing /Users/mpjuers/bin/share/nvim/runtime/plugin/netrwPlugin.vim
+237.127  000.562  000.562: sourcing /Users/mpjuers/bin/share/nvim/runtime/autoload/remote/host.vim
+238.671  000.597  000.597: sourcing /Users/mpjuers/bin/share/nvim/runtime/autoload/remote/define.vim
+238.883  003.241  002.082: sourcing /Users/mpjuers/.local/share/nvim/rplugin.vim
+238.902  004.185  000.943: sourcing /Users/mpjuers/bin/share/nvim/runtime/plugin/rplugin.vim
+239.709  000.535  000.535: sourcing /Users/mpjuers/bin/share/nvim/runtime/plugin/shada.vim
+240.124  000.103  000.103: sourcing /Users/mpjuers/bin/share/nvim/runtime/plugin/spellfile.vim
+241.149  000.800  000.800: sourcing /Users/mpjuers/bin/share/nvim/runtime/plugin/tarPlugin.vim
+241.840  000.307  000.307: sourcing /Users/mpjuers/bin/share/nvim/runtime/plugin/tohtml.vim
+242.260  000.159  000.159: sourcing /Users/mpjuers/bin/share/nvim/runtime/plugin/tutor.vim
+243.357  000.820  000.820: sourcing /Users/mpjuers/bin/share/nvim/runtime/plugin/zipPlugin.vim
+243.472  022.480: loading plugins
+243.972  000.501: loading packages
+245.084  000.053  000.053: sourcing /Users/mpjuers/.config/nvim/plugged/vim-matchup/after/plugin/matchit.vim
+245.577  001.551: loading after plugins
+245.618  000.041: inits 3
+256.699  011.081: reading ShaDa
+268.154  001.297  001.297: sourcing /Users/mpjuers/bin/share/nvim/runtime/scripts.vim
+274.616  000.481  000.481: sourcing /Users/mpjuers/bin/share/nvim/runtime/ftplugin/text.vim
+285.441  000.330  000.330: sourcing /Users/mpjuers/.config/nvim/plugged/vim-matchup/autoload/matchup/ts_engine.vim
+293.296  000.118  000.118: sourcing /Users/mpjuers/.config/nvim/plugged/vim-matchup/autoload/matchup/re.vim
+294.998  000.252  000.252: sourcing /Users/mpjuers/.config/nvim/plugged/vim-closer/autoload/closer.vim
+297.587  000.377  000.377: sourcing /Users/mpjuers/.config/nvim/plugged/ale/autoload/ale.vim
+299.194  000.658  000.658: sourcing /Users/mpjuers/.config/nvim/plugged/ale/autoload/ale/util.vim
+300.738  000.572  000.572: sourcing /Users/mpjuers/.config/nvim/plugged/ale/autoload/ale/linter.vim
+305.430  000.209  000.209: sourcing /Users/mpjuers/.config/nvim/plugged/ale/autoload/ale/handlers/alex.vim
+305.921  002.278  002.069: sourcing /Users/mpjuers/.config/nvim/plugged/ale/ale_linters/text/alex.vim
+308.409  000.421  000.421: sourcing /Users/mpjuers/.config/nvim/plugged/ale/autoload/ale/handlers/languagetool.vim
+308.939  002.741  002.320: sourcing /Users/mpjuers/.config/nvim/plugged/ale/ale_linters/text/languagetool.vim
+310.071  000.809  000.809: sourcing /Users/mpjuers/.config/nvim/plugged/ale/ale_linters/text/proselint.vim
+311.370  001.010  001.010: sourcing /Users/mpjuers/.config/nvim/plugged/ale/ale_linters/text/redpen.vim
+312.549  000.849  000.849: sourcing /Users/mpjuers/.config/nvim/plugged/ale/ale_linters/text/textlint.vim
+313.666  000.815  000.815: sourcing /Users/mpjuers/.config/nvim/plugged/ale/ale_linters/text/vale.vim
+315.482  000.309  000.309: sourcing /Users/mpjuers/.config/nvim/plugged/ale/autoload/ale/handlers/writegood.vim
+315.991  001.986  001.677: sourcing /Users/mpjuers/.config/nvim/plugged/ale/ale_linters/text/writegood.vim
+317.503  046.231: opening buffers
+906.691  589.188: BufEnter autocommands
+906.706  000.015: editing files in windows
+1529.655  622.949: VimEnter autocommands
+1529.710  000.054: UIEnter autocommands
+1529.717  000.007: before starting main loop
+1689.509  000.614  000.614: sourcing /Users/mpjuers/.config/nvim/plugged/vim-matchup/autoload/matchup/pos.vim
+1692.404  001.769  001.769: sourcing /Users/mpjuers/.config/nvim/plugged/vim-matchup/autoload/matchup/delim.vim
+1714.420  017.920  017.920: sourcing /Users/mpjuers/.config/nvim/plugged/vim-fugitive/autoload/fugitive.vim
+1717.621  167.602: first screen update
+1717.631  000.009: --- NVIM STARTED ---

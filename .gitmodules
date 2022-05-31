@@ -1,0 +1,9 @@
+[submodule ".hammerspoon/Spoons/VimMode.spoon"]
+	path = .hammerspoon/Spoons/VimMode.spoon
+	url = https://github.com/dbalatero/VimMode.spoon.git
+[submodule ".tmux/plugins/nord-tmux"]
+	path = .tmux/plugins/nord-tmux
+	url = git@github.com:arcticicestudio/nord-tmux
+[submodule "nord.nvim"]
+	path = nord.nvim
+	url = /Users/mpjuers/.config/nvim/plugged/nord.nvim

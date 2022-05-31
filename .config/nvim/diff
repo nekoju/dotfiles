@@ -1,0 +1,238 @@
+1,3c1
+< call plug#begin('~/.config/nvim/plugged')
+< " Plug 'kopischke/vim-stay' " This isn't working properly for some reason
+< " Plug 'vim-syntastic/syntastic'
+---
+> call plug#begin('~/.config/nvim/plugged/')
+5d2
+< Plug 'altercation/vim-colors-solarized'
+7d3
+< Plug 'christoomey/vim-tmux-navigator'
+14d9
+< " Plug 'jeffkreeftmeijer/vim-dim'
+17,18c12,13
+< " Plug 'kana/vim-submode'
+< " Plug 'kchmck/vim-coffee-script'
+---
+> Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+> Plug 'junegunn/fzf.vim'
+20,23c15,18
+< Plug 'lervag/vimtex' Plug 'mpjuers/showcontext'
+< Plug 'python/black'
+< " Plug 'Shougo/neosnippet-snippets'
+< " Plug 'Shougo/neosnippet.vim'
+---
+> Plug 'lervag/vimtex'
+> Plug 'mpjuers/showcontext'
+> " Automatically shows popup menu
+> Plug 'vim-scripts/AutoComplPop'
+28d22
+< Plug 'tpope/vim-repeat'
+30,32d23
+< Plug 'tpope/vim-unimpaired'
+< Plug 'tpope/vim-vinegar'
+< " Plug 'vim-voom/VOoM'
+37,45d27
+< " Plug 'zchee/deoplete-jedi'
+< " if has('nvim')
+< "   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+< " else
+< "   Plug 'roxma/vim-hug-neovim-rpc'
+< "   Plug 'roxma/nvim-yarp'
+< "   Plug 'Shougo/deoplete.nvim'
+< " endif
+< " Plug 'tmux-plugins/vim-tmux-focus-events'
+51,54d32
+< source $VIMHOME/pluginOptions.vim
+< source $VIMHOME/optionsAndVariables.vim
+< source $VIMHOME/autocommands.vim
+< source $VIMHOME/mappings.vim
+58,67d35
+< 
+< " for automatic reloading of changed files
+< autocmd FocusGained,BufEnter * :silent! !
+< autocmd FocusLost,WinLeave * :silent! noautocmd w
+< 
+< 
+< " automatically set working directory to current file
+< 
+< autocmd BufEnter * silent! lcd %:p:h
+< 
+77c45
+< nnoremap z= ea<C-X><C-S>
+---
+> nnoremap <C-X><C-S>
+88,97c56,60
+< nmap <silent> <leader>sh   :leftabove  vnew<CR>
+< nmap <silent> <leader>sl  :rightbelow vnew<CR>
+< nmap <silent> <leader>sk     :leftabove  new<CR>
+< nmap <silent> <leader>sj   :rightbelow new<CR>
+< 
+< " move from terminal mode
+< tnoremap <C-h> <C-\><C-n><C-w>h
+< tnoremap <C-j> <C-\><C-n><C-w>j
+< tnoremap <C-k> <C-\><C-n><C-w>k
+< tnoremap <C-l> <C-\><C-n><C-w>l
+---
+> nmap <silent> <leader>sh :leftabove vnew<CR>
+> nmap <silent> <leader>sl :rightbelow vnew<CR>
+> nmap <silent> <leader>sk :leftabove new<CR>
+> nmap <silent> <leader>sj :rightbelow new<CR>
+> 
+101a65,75
+> " lightline
+> let g:lightline = {
+>             \ 'colorscheme': 'nord',
+>             \ 'active': {
+>                 \   'left': [ [ 'mode', 'paste' ],
+>                 \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+>                 \ },
+>                 \ 'component_function': {
+>                     \   'gitbranch': 'fugitive#head'
+>                     \ },
+>                     \ }
+102a77
+> " Word count for latex
+111,123c86
+< let w:locallist_open = 0
+< function! Toggle_locallist()
+<     if w:locallist_open == 0
+<         let w:locallist_open = 1
+<         lopen
+<         wincmd p
+<     else
+<         let w:locallist_open = 0
+<         lclose
+<     endif
+< endfunction
+< nnoremap <leader>lo :call Toggle_locallist()<CR>
+< 
+---
+> " Search installed libraries for tags and add to envt.
+142,144c105
+<   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+< " inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+< "   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+---
+>             \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+147a109
+> " Switch black on and off.
+154c116
+<             autocmd! BufWritePre *.py execute ':Black'
+---
+>             autocmd! BufWritePre *.py execute ':!Black -l 79 %'
+156c118
+< 		echo 'Black on'
+---
+>         echo 'Black on'
+160c122
+< 		echo 'Black off'
+---
+>         echo 'Black off'
+164a127
+> " Puts output of :read inline rather than on a new line.
+166,168c129,131
+<   let colnum = col('.')
+<   let line = getline('.')
+<   call setline('.', strpart(line, 0, colnum) . system(a:command) . strpart(line, colnum))
+---
+>     let colnum = col('.')
+>     let line = getline('.')
+>     call setline('.', strpart(line, 0, colnum) . system(a:command) . strpart(line, colnum))
+173,186c136,165
+< nnoremap <C-h> <C-\\><C-n><C-w>h
+< nnoremap <C-l> <C-\\><C-n><C-w>l
+< nnoremap <C-j> <C-\\><C-n><C-w>j
+< nnoremap <C-k> <C-\\><C-n><C-w>k
+< " statusline
+< " set laststatus=2
+< " set statusline=buff\ %n 	" buffer number
+< " set statusline+=\ ::\ 		" separator ' :: '
+< " set statusline+=%f 		" filename
+< " set statusline+=\ ::\ 		" separator ' :: '
+< " set statusline+=%y		" filetype
+< " set statusline+=%= 		" switch sides
+< " set statusline+=%{getcwd()}	" working dir
+< 
+---
+> " Switching windows
+> "" In terminal
+> tnoremap <localleader>hh <C-\><C-N><C-w>h
+> tnoremap <localleader>jj <C-\><C-N><C-w>j
+> tnoremap <localleader>kk <C-\><C-N><C-w>k
+> tnoremap <localleader>ll <C-\><C-N><C-w>l
+> "" In insert mode
+> inoremap <localleader>hh <C-]><C-w>h
+> inoremap <localleader>jj <C-]><C-w>j
+> inoremap <localleader>kk <C-]><C-w>k
+> inoremap <localleader>ll <C-]><C-w>l
+> """ In normal mode
+> nnoremap <localleader>hh <C-w>h
+> nnoremap <localleader>jj <C-w>j
+> nnoremap <localleader>kk <C-w>k
+> nnoremap <localleader>ll <C-w>l
+> 
+> " fzf mappings
+> nnoremap <C-p> <silent> :Files<CR>
+> inoremap <C-p> <silent> :Files<CR>
+> nnoremap <C-p> <C-f> <silent> :Ag<CR>
+> nnoremap <C-p> <C-b> <silent> :Buffers<CR>
+> nnoremap <C-p> <C-m> <silent> :Marks<CR>
+> nnoremap <C-m> <C-w> <silent> :Windows<CR>
+> nnoremap <C-p> <C-h> <silent> :History:<CR>
+> nnoremap <C-s> <C-s> <silent> :Snippets<CR>
+> nnoremap <C-p> <C-c> <silent>:Commits<CR>
+> nnoremap <C-p> <C-p> <silent> :BCommits<CR>
+> nnoremap <leader>ph :Helptags<CR>
+> nnoremap <C-f> :Tags<CR>
+192a172
+> " Tabs to spaces
+197d176
+< 
+205,207d183
+< " used for vim-stay
+< set viewoptions=cursor,folds,slash,unix
+< " let g:skipview_files = ['*\.vim']
+210a187
+> 
+235,249d211
+< " required for non-funkiness of solarized
+< " below required for solarized
+< " set background=dark
+< " let g:solarized_termtrans=1
+< " let g:solarized_termcolors=16
+< " if has("terminfo")
+< "   let &t_Co=16
+< "   let &t_AB="\<Esc>[%?%p1%{8}%<%t%p1%{40}%+%e%p1%{92}%+%;%dm"
+< "   let &t_AF="\<Esc>[%?%p1%{8}%<%t%p1%{30}%+%e%p1%{82}%+%;%dm"
+< " else
+< "   let &t_Co=16
+< "   let &t_Sf="\<Esc>[3%dm"
+< "   let &t_Sb="\<Esc>[4%dm"
+< " endif
+< " set t_Co=16 " for dim
+251c213
+< " let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+---
+> 
+253a216
+> 
+273a237,241
+> " for automatic reloading of changed files
+> autocmd FocusGained,BufEnter * :silent! !
+> autocmd FocusLost,WinLeave * :silent! noautocmd w
+> 
+> autocmd BufEnter * silent! lcd %:p:h
+288,297d255
+< " " netrw: follow symlink and set working directory
+< " autocmd CursorMoved silent *
+< " " short circuit for non-netrw files
+< "             \ if expand('%:p') !~# '\.git'
+< "             \ if &filetype == 'netrw' |
+< "                 \ call FollowSymlink() |
+< "                 \ call SetProjectRoot() |
+< "             \ endif
+< " automatically follow symlinks
+< 
+340a299
+> " I need to figure out what problem this was trying to solve.
