@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ARGS=("$@")
+recipients=${ARGS[@]/#/--recipient }
+pbpaste | gpg -es $recipients

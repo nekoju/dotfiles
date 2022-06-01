@@ -1,7 +1,7 @@
 call plug#begin('~/.config/nvim/plugged/')
 Plug 'andymass/vim-matchup'
 Plug 'chrisbra/csv.vim'
-Plug 'dag/vim-fish'
+" Plug 'dag/vim-fish'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'elzr/vim-json'
 Plug 'fs111/pydoc.vim'
@@ -9,6 +9,7 @@ Plug 'jalvesaq/Nvim-R'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'khaveesh/vim-fish-syntax'
 Plug 'Konfekt/FastFold'
 Plug 'lervag/vimtex'
 "" Why won't this work?
@@ -30,6 +31,10 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'wesQ3/vim-windowswap'
 Plug 'w0rp/ale'
 call plug#end()
+
+if &shell =~# 'fish$'
+    set shell=sh
+endif
 
 " Enable true color 启用终端24位色
 if exists('+termguicolors')

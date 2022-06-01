@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# note set default dir to dotfiles
+# usage: dotsetup [targets...] [dir]
+
+for link in "${@:1:$#-1}"; do
+    fullpath=$(readlink -f "$link")
+    base=$(basename "$link")
+    dir="${@: -1}"
+    cp -rv "$fullpath" "$dir" \
+        && echo copied "$link" to "$dir"
+    rm -r "$fullpath" \
+        && echo "$link" removed 
+    ln -s "$dir/$base" "$fullpath" \
+        && echo "$dir/$base" linked to "$fullpath"
+done

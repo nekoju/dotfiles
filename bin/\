@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for link in "${@:1:$#-1}"; do
+    cp -rv $(readlink -f "$link") "${@: -1}" \
+        && echo copied "$link" to "${@: -1}"
+    rm -r "$link" \
+        && echo "$link" removed 
+    ln -s "$(readlink -f $(${1: -1}))"/"$(basename $link)" "$(readlink -f $link)" \
+        && echo "$link" linked to "${@: -1}"/"$(basename $link)"
+done
