@@ -38,6 +38,7 @@ bind -M default v edit_cmd
 # Use ipdb for debugging
 # set -x PYTHONBREAKPOINT ipdb.set_trace
 
+<<<<<<< HEAD
 set -q CC; or set CC clang
 set -q CXX; or set CXX $CC++ 
 
@@ -48,13 +49,47 @@ set -gx CPPFLAGS $CPPFLAGS "-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/
 
 set -x ENABLE_USER_SITE "False"
 
+||||||| parent of 4e7a0f8 (Finished pyenv setup on mac.)
+set -x PYTHONPATH $HOME/.pyenv/versions/dev/lib/python3.7/site-packages 
+set -x PYTHONPATH $HOME/.pyenv/versions/utils/lib/python3.7/site-packages $PYTHONPATH
+=======
+set -q CC; or set CC clang
+set -q CXX; or set CXX $CC++ 
+
+set -gx LDFLAGS "-L/usr/local/opt/bzip2/lib"
+set -gx CPPFLAGS "-I/usr/local/opt/bzip2/include"
+set -gx LDFLAGS $LDFLAGS "-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
+set -gx CPPFLAGS $CPPFLAGS "-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v1/"
+
+set -x PYENV_ROOT $HOME/.pyenv
+set -x ENABLE_USER_SITE "False"
+
+# set -x PYTHONPATH $HOME/.pyenv/versions/dev/lib/python3.7/site-packages 
+# set -x PYTHONPATH $HOME/.pyenv/versions/utils/lib/python3.7/site-packages $PYTHONPATH
+>>>>>>> 4e7a0f8 (Finished pyenv setup on mac.)
 set -x PATH /opt/local/bin /opt/local/sbin $PATH
 set -x MANPATH /opt/local/share/man (manpath)
+set -x PATH /usr/local/opt/llvm/bin $PATH
 set -x PATH $HOME/bin $PATH
 set -x PATH $HOME/bin/edirect $PATH
 set -x PATH $HOME/.cargo/bin $PATH
 set -x PATH $HOME/.gitaliases $PATH
 set -x PATH $HOME/edirect $PATH
+<<<<<<< HEAD
+||||||| parent of 4e7a0f8 (Finished pyenv setup on mac.)
+set -x PATH $HOME/.pyenv/bin $PATH
+status --is-interactive; and pyenv init - | source
+status --is-interactive; and pyenv virtualenv-init - | source
+# set -x PYTHONSTARTUP (python -m jedi repl)
+=======
+set -x PATH $PYENV_ROOT/bin $PATH
+set -x PATH $PYENV_ROOT/shims $PATH
+
+pyenv init --path | source
+pyenv init - | source
+pyenv virtualenv-init - | source
+# set -x PYTHONSTARTUP (python -m jedi repl)
+>>>>>>> 4e7a0f8 (Finished pyenv setup on mac.)
 
 fish_ssh_agent
 
