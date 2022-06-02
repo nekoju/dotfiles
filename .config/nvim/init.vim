@@ -32,9 +32,9 @@ Plug 'wesQ3/vim-windowswap'
 Plug 'w0rp/ale'
 call plug#end()
 
-if &shell =~# 'fish$'
-    set shell=sh
-endif
+" if &shell =~# 'fish$'
+"     set shell=sh
+" endif
 
 let g:slime_target="neovim"
 xmap <Space> <Plug>SlimeRegionSend
