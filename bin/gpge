@@ -2,4 +2,4 @@
 
 ARGS=("$@")
 recipients=${ARGS[@]/#/--recipient }
-pbpaste | gpg -es $recipients
+pbpaste | gpg -aes $recipients
