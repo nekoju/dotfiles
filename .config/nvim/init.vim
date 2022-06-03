@@ -132,7 +132,7 @@ function! Toggle_black_running()
         let g:black_running = 1
         augroup BlackRunning
             autocmd!
-            autocmd! BufWritePre *.py execute ':!Black -l 79 %'
+            autocmd! BufWritePost *.py execute ':!black -l 79 %'
         augroup END
         echo 'Black on'
     else
