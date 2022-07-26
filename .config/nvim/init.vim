@@ -5,8 +5,8 @@ Plug 'chrisbra/csv.vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'elzr/vim-json'
 Plug 'fs111/pydoc.vim'
-Plug 'jalvesaq/Nvim-R'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'khaveesh/vim-fish-syntax'
@@ -35,6 +35,14 @@ call plug#end()
 if &shell =~# 'fish$'
     set shell=sh
 endif
+
+let g:slime_target="neovim"
+xmap <Space> <Plug>SlimeRegionSend
+nmap <Space> <Plug>SlimeParagraphSend
+
+let g:slime_target="neovim"
+xmap <Space> <Plug>SlimeRegionSend
+nmap <Space> <Plug>SlimeParagraphSend
 
 " Enable true color 启用终端24位色
 if exists('+termguicolors')
@@ -258,27 +266,10 @@ set updatetime=400
 
 set shortmess+=F
 
-" R plugin options
-
-let R_rmdchunk = '``'
-" for automatic reloading of changed files
-autocmd FocusGained,BufEnter * :silent! !
-autocmd FocusLost,WinLeave * :silent! noautocmd w
-
-let r_indent_align_args = 0
-let r_indent_ess_comments = 0
-let r_indent_ess_compatible = 0
-
-vmap <Space> <Plug>RDSendSelection
-nmap <Space> <Plug>RDSendLine
-
-" Two-character search
-nmap <expr> "normal <leader>/" . (nr2char(getchar())) . "<CR>"
 
 autocmd BufEnter * silent! lcd %:p:h
 augroup vimrc
     autocmd!
-    autocmd FileType rmd setlocal omnifunc=CompleteR
     autocmd FileType make setlocal noexpandtab
     autocmd FileType rmd setlocal commentstring=#%s
     autocmd FileType cpp setlocal commentstring=//%s
@@ -336,12 +327,6 @@ augroup END
 autocmd! BufRead "*.md" :set linewidth=80
 autocmd! BufWritePre "*.md" :execute "normal! mygggqG'y"
 
-augroup r
-    autocmd!
-    autocmd FileType r nnoremap <leader>aa <Plug>RSendFile
-    autocmd FileType r inoremap <leader>aa <Plug>RSendFile
-augroup END
-
 " set laststatus=2
 " set noshowmode
 " " status bar colors
@@ -398,7 +383,6 @@ augroup Closer
         \ let b:closer_flags = '([{'
 augroup END
 
-let R_rconsole_width = 0
 
 " let g:indent_blankline_char = '|'
 " language server stuff
