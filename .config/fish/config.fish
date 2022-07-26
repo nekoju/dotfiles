@@ -57,3 +57,9 @@ set -x PATH $HOME/.gitaliases $PATH
 set -x PATH $HOME/edirect $PATH
 
 fish_ssh_agent
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval /usr/local/Caskroom/miniconda/base/bin/conda "shell.fish" "hook" $argv | source
+# <<< conda initialize <<<
+
