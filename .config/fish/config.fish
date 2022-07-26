@@ -26,10 +26,6 @@ set -x __fish_git_prompt_color_upstream_ahead green
 set -x __fish_git_prompt_color_upstream_behind red
 
 
-# for pyenv-virtualenvwrapper
-set -x WORKON_HOME ~/.ve
-set -x PROJECT_HOME ~/Workspace
-
 # Proper terminal behavior with unicode
 set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8
@@ -42,8 +38,16 @@ bind -M default v edit_cmd
 # Use ipdb for debugging
 # set -x PYTHONBREAKPOINT ipdb.set_trace
 
-set -x PYTHONPATH $HOME/.pyenv/versions/dev/lib/python3.7/site-packages 
-set -x PYTHONPATH $HOME/.pyenv/versions/utils/lib/python3.7/site-packages $PYTHONPATH
+set -q CC; or set CC clang
+set -q CXX; or set CXX $CC++ 
+
+set -gx LDFLAGS "-L/usr/local/opt/bzip2/lib"
+set -gx CPPFLAGS "-I/usr/local/opt/bzip2/include"
+set -gx LDFLAGS $LDFLAGS "-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
+set -gx CPPFLAGS $CPPFLAGS "-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v1/"
+
+set -x ENABLE_USER_SITE "False"
+
 set -x PATH /opt/local/bin /opt/local/sbin $PATH
 set -x MANPATH /opt/local/share/man (manpath)
 set -x PATH $HOME/bin $PATH
@@ -51,9 +55,5 @@ set -x PATH $HOME/bin/edirect $PATH
 set -x PATH $HOME/.cargo/bin $PATH
 set -x PATH $HOME/.gitaliases $PATH
 set -x PATH $HOME/edirect $PATH
-set -x PATH $HOME/.pyenv/bin $PATH
-status --is-interactive; and pyenv init - | source
-status --is-interactive; and pyenv virtualenv-init - | source
-# set -x PYTHONSTARTUP (python -m jedi repl)
 
 fish_ssh_agent
