@@ -22,3 +22,4 @@
 bin/ext4fuse
 .config/Autodesk
 .config/gtk-2.0
+.ipython/
