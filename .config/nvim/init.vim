@@ -38,6 +38,9 @@ if &shell =~# 'fish$'
     set shell=sh
 endif
 
+let g:coq_settings = { 'auto_start': 'shut-up' }
+
+
 let g:slime_target="neovim"
 xmap <Space> <Plug>SlimeRegionSend
 nmap <Space> <Plug>SlimeParagraphSend
