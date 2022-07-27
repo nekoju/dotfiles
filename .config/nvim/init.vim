@@ -65,7 +65,7 @@ if has('nvim')
   let $GIT_EDITOR = 'nvr -cc split --remote-wait'
 endif
 
-let g:python3_host_prog = "/Users/mpjuers/.pyenv/versions/neovim3/bin/python"
+let g:python3_host_prog = "/usr/local/Caskroom/miniconda/base/bin/python"
 
 let $VIMHOME = expand('<sfile>:p:h')
 
