@@ -16,6 +16,8 @@ Plug 'lervag/vimtex'
 " Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'mpjuers/showcontext'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'rstacruz/vim-closer'
