@@ -56,7 +56,7 @@ inoremap <leader>xf <C-X><C-F>
 
 " Use neovim-remote as git editor
 if has('nvim')
-  let $GIT_EDITOR = 'nvr -cc split --remote-wait'
+  let $GIT_EDITOR = 'nvr -cc tabnew --remote-wait'
 endif
 
 let g:python3_host_prog = "/usr/local/Caskroom/miniconda/base/bin/python"
