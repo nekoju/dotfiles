@@ -15,9 +15,6 @@ Plug 'lervag/vimtex'
 "" Why won't this work?
 " Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'mpjuers/showcontext'
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'rstacruz/vim-closer'
@@ -37,9 +34,6 @@ call plug#end()
 if &shell =~# 'fish$'
     set shell=sh
 endif
-
-let g:coq_settings = { 'auto_start': 'shut-up' }
-
 
 let g:slime_target="neovim"
 xmap <Space> <Plug>SlimeRegionSend
