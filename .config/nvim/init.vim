@@ -15,9 +15,6 @@ Plug 'lervag/vimtex'
 "" Why won't this work?
 " Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'mpjuers/showcontext'
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'rstacruz/vim-closer'
@@ -37,9 +34,6 @@ call plug#end()
 " if &shell =~# 'fish$'
 "     set shell=sh
 " endif
-
-let g:coq_settings = { 'auto_start': 'shut-up' }
-
 
 let g:slime_target="neovim"
 xmap <Space> <Plug>SlimeRegionSend
@@ -62,7 +56,7 @@ inoremap <leader>xf <C-X><C-F>
 
 " Use neovim-remote as git editor
 if has('nvim')
-  let $GIT_EDITOR = 'nvr -cc split --remote-wait'
+  let $GIT_EDITOR = 'nvr -cc tabnew --remote-wait'
 endif
 
 let g:python3_host_prog = "/usr/local/Caskroom/miniconda/base/bin/python"
