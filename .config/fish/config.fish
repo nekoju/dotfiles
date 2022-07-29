@@ -16,6 +16,8 @@ and not set -q TMUX
     exec tmux
 end
 
+set -x TERM tmux-256color
+
  # Fish git prompt
 set -x __fish_git_prompt_showdirtystate 'yes'
 set -x __fish_git_prompt_showstashstate 'yes'
