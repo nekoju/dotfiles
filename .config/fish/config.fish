@@ -43,10 +43,8 @@ bind -M default v edit_cmd
 set -q CC; or set CC clang
 set -q CXX; or set CXX $CC++ 
 
-set -gx LDFLAGS "-L/usr/local/opt/bzip2/lib"
-set -gx CPPFLAGS "-I/usr/local/opt/bzip2/include"
-set -gx LDFLAGS $LDFLAGS "-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
-set -gx CPPFLAGS $CPPFLAGS "-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v1/"
+set -x ENABLE_USER_SITE "False"
+
 
 set -x ENABLE_USER_SITE "False"
 

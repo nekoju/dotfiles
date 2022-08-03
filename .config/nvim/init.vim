@@ -109,7 +109,7 @@ noremap <silent> <F5> :buffers<CR>:buffer<Space>
 " open term window
 noremap <silent> <leader>tj :belowright new \| resize 15 \| set wfh \| term<CR>
 noremap <silent> <leader>twj :botright new \| resize 15 \| set wfh \| term<CR>
-noremap <silent> <leader>twl :botright vnew \| vertical resize 80 \| set wfw \| term<CR>
+noremap <silent> <leader>twl :botright vnew \| vertical resize 100 \| set wfw \| term<CR>
 
 command! Qtab windo bd
 function! PythonAddTags(module)
