@@ -16,6 +16,8 @@ and not set -q TMUX
     exec tmux
 end
 
+set -x PYTHONBREAKPOINT ipdb.set_trace
+
 set -x TERM tmux-256color
 
  # Fish git prompt
@@ -45,7 +47,10 @@ set -x JAVA_HOME /usr/local/opt/openjdk/bin
 set -q CC; or set CC clang
 set -q CXX; or set CXX $CC++ 
 
-set -x ENABLE_USER_SITE "False"
+set -gx LDFLAGS "-L/usr/local/opt/bzip2/lib"
+set -gx CPPFLAGS "-I/usr/local/opt/bzip2/include"
+set -gx LDFLAGS $LDFLAGS "-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
+set -gx CPPFLAGS $CPPFLAGS "-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v1/"
 
 set -x ENABLE_USER_SITE "False"
 
