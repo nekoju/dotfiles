@@ -16,6 +16,8 @@ and not set -q TMUX
     exec tmux
 end
 
+set -x PYTHONBREAKPOINT ipdb.set_trace
+
 set -x TERM tmux-256color
 
  # Fish git prompt
