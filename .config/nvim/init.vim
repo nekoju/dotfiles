@@ -6,6 +6,7 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'elzr/vim-json'
 Plug 'fs111/pydoc.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'jiangmiao/auto-pairs' 
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
