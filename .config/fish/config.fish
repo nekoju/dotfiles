@@ -4,8 +4,8 @@
 # set green (set_color green)
 # set red (set_color red)
 # set gray (set_color -o black)
-# set -Ux VISUAL nvim
-# set -Ux EDITOR $VISUAL
+set -Ux VISUAL nvim
+set -Ux EDITOR $VISUAL
 # source (dirname (status -f))/init.fish
 
 # if tmux is executable and not inside a tmux session, then try to attach.

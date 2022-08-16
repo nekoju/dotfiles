@@ -49,7 +49,7 @@ call plug#end()
 " endif
 
 let g:coq_settings = { 'auto_start': 'shut-up' }
-let g:coq_settings = { 'keymap.eval_snips': '<leader>jj' }
+let g:coq_settings = { 'keymap.eval_snips': '<leader>ss' }
 source /Users/nekoj/Dotfiles/.config/nvim/lspsetup.lua
 
 let g:slime_target="neovim"
