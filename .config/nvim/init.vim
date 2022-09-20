@@ -205,6 +205,7 @@ if has('nvim')
     let $VISUAL = 'nvr -cc split --remote-wait'
 endif
 
+set autoread
 set inccommand=nosplit
 " Tabs to spaces
 set expandtab
