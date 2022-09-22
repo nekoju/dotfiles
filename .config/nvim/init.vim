@@ -18,7 +18,6 @@ Plug 'lervag/vimtex'
 Plug 'mpjuers/showcontext'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'rstacruz/vim-closer'
 "" To set up later
 " Plug 'spinks/vim-leader-guide'
 " Pragmatic folding for .py
@@ -30,11 +29,29 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'wesQ3/vim-windowswap'
 Plug 'w0rp/ale'
+" main one
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+" 9000+ Snippets
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+
+" lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
+" Need to **configure separately**
+
+Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
+" - shell repl
+" - nvim lua api
+" - scientific calculator
+" - comment banner
+" - etc
 call plug#end()
 
-if &shell =~# 'fish$'
-    set shell=sh
-endif
+" if &shell =~# 'fish$'
+"     set shell=sh
+" endif
+
+let g:coq_settings = { 'auto_start': 'shut-up' }
+let g:coq_settings = { 'keymap.eval_snips': '<leader>ss' }
+source /Users/nekoj/Dotfiles/.config/nvim/lspsetup.lua
 
 let g:slime_target="neovim"
 xmap <Space> <Plug>SlimeRegionSend
@@ -64,18 +81,6 @@ let g:python3_host_prog = "/usr/local/Caskroom/miniconda/base/bin/python"
 
 let $VIMHOME = expand('<sfile>:p:h')
 
-" Surround mappings
-inoremap (( ()<esc>i
-inoremap [[ []<esc>i
-inoremap {{ {}<esc>i
-inoremap << <><esc>i
-inoremap ** **<esc>i
-inoremap "" ""<esc>i
-inoremap '' ''<esc>i
-imap <leader>aa <esc>]%a
-imap <leader>bb <esc>[%i
-nmap <leader>aa <esc>]%
-nmap <leader>bb <esc>[%
 
 " Press F4 to toggle highlighting on/off, and show current value.
 noremap <F4> :set hlsearch! hlsearch?<CR>
@@ -266,6 +271,8 @@ set conceallevel=0
 set updatetime=400
 
 set shortmess+=F
+
+set sessionoptions-=folds
 
 
 autocmd BufEnter * silent! lcd %:p:h

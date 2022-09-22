@@ -42,20 +42,32 @@ bind -M default v edit_cmd
 # Use ipdb for debugging
 # set -x PYTHONBREAKPOINT ipdb.set_trace
 
+set -x JAVA_HOME /usr/local/opt/openjdk/bin
+
 set -q CC; or set CC clang
 set -q CXX; or set CXX $CC++ 
 
+set -gx LDFLAGS "-L/usr/local/opt/bzip2/lib"
+set -gx CPPFLAGS "-I/usr/local/opt/bzip2/include"
+set -gx LDFLAGS $LDFLAGS "-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
+set -gx CPPFLAGS $CPPFLAGS "-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v1/"
+
 set -x ENABLE_USER_SITE "False"
 
-
-set -x ENABLE_USER_SITE "False"
-
+set -x PATH $JAVA_HOME $PATH
 set -x PATH /opt/local/bin /opt/local/sbin $PATH
 set -x MANPATH /opt/local/share/man (manpath)
+set -x PATH /usr/local/opt/llvm/bin $PATH
 set -x PATH $HOME/bin $PATH
 set -x PATH $HOME/bin/edirect $PATH
 set -x PATH $HOME/.cargo/bin $PATH
 set -x PATH $HOME/.gitaliases $PATH
 set -x PATH $HOME/edirect $PATH
+
+set -gx LDFLAGS "-L/usr/local/opt/bzip2/lib"
+set -gx CPPFLAGS "-I/usr/local/opt/bzip2/include"
+set -gx LDFLAGS $LDFLAGS "-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
+set -gx CPPFLAGS $CPPFLAGS "-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v1/ -I$JAVA_HOME/include -I$JAVA_HOME/include/darwin"
+
 
 fish_ssh_agent
