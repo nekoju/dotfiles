@@ -296,7 +296,7 @@ let g:currentmode={
     \}
 ]])
 
-vim.g.coq_settings = {auto_start = "shut-up"}
+vim.g.coq_settings = {auto_start = "shut-up", keymap = {eval_snips = "<leader>ss"}}
 vim.g.slime_target = "neovim"
 -- vim.call("let $VIMHOME = expand('<sfile>:p:h')")
 vim.g.black_running = 0
@@ -437,3 +437,9 @@ vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
 --     group = tags,
 --     command = "call SetTags(trim(system('git rev-parse --show-toplevel')) . '/.tags')"
 -- })
+
+-- lsp
+
+local lsp = require "lspconfig"
+local coq = require "coq"
+lsp.pyright.setup(coq.lsp_ensure_capabilities())
