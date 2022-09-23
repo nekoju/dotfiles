@@ -121,7 +121,7 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "S", function()
 	end
 end)
 
-hs.hotkey.bind({"ctrl"}, "space", function()
+hs.hotkey.bind({"ctrl", "shift"}, "space", function()
     local app = hs.application.get("kitty")
     if app then
         if not app:mainWindow() then
