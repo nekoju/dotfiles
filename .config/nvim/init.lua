@@ -36,6 +36,7 @@ require "paq" {
     -- - comment banner
     -- - etc
 }
+
 vim.api.nvim_set_keymap(
 "x",
 "<Space>",
@@ -195,25 +196,25 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
 "t",
 "<leader>hh",
-"<C-><C-N><C-w>h",
+"<C-\\><C-N><C-w>h",
 {noremap = true}
 )
 vim.api.nvim_set_keymap(
 "t",
 "<leader>jj",
-"<C-><C-N><C-w>j",
+"<C-\\><C-N><C-w>j",
 {noremap = true}
 )
 vim.api.nvim_set_keymap(
 "t",
 "<leader>kk",
-"<C-><C-N><C-w>k",
+"<C-\\><C-N><C-w>k",
 {noremap = true}
 )
 vim.api.nvim_set_keymap(
 "t",
 "<leader>ll",
-"<C-><C-N><C-w>l",
+"<C-\\><C-N><C-w>l",
 {noremap = true}
 )
 vim.api.nvim_set_keymap(
