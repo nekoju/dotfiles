@@ -36,7 +36,6 @@ require "paq" {
 	-- - comment banner
 	-- - etc
 }
-
 vim.api.nvim_set_keymap(
     "x",
      "<Space>",
@@ -154,7 +153,7 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
     "",
      "<F3>",
-     ":w !detex \\| wc -w<CR>",
+     ":w !detex | wc -w<CR>",
      {noremap = true, silent = true}
 )
 vim.api.nvim_set_keymap(
@@ -166,19 +165,19 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
     "",
      "<leader>tj",
-     ":belowright new \\| resize 15 \\| set wfh \\| term<CR>",
+     ":belowright new | resize 15 | set wfh | term<CR>",
      {noremap = true, silent = true}
 )
 vim.api.nvim_set_keymap(
     "",
      "<leader>twj",
-     ":botright new \\| resize 15 \\| set wfh \\| term<CR>",
+     ":botright new | resize 15 | set wfh | term<CR>",
      {noremap = true, silent = true}
 )
 vim.api.nvim_set_keymap(
     "",
      "<leader>twl",
-     ":botright vnew \\| vertical resize 100 \\| set wfw \\| term<CR>",
+     ":botright vnew | vertical resize 100 | set wfw | term<CR>",
      {noremap = true, silent = true}
 )
 vim.api.nvim_set_keymap(
@@ -196,25 +195,25 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
     "t",
      "<leader>hh",
-     "<C-\\><C-N><C-w>h",
+     "<C-><C-N><C-w>h",
      {noremap = true}
 )
 vim.api.nvim_set_keymap(
     "t",
      "<leader>jj",
-     "<C-\\><C-N><C-w>j",
+     "<C-><C-N><C-w>j",
      {noremap = true}
 )
 vim.api.nvim_set_keymap(
     "t",
      "<leader>kk",
-     "<C-\\><C-N><C-w>k",
+     "<C-><C-N><C-w>k",
      {noremap = true}
 )
 vim.api.nvim_set_keymap(
     "t",
      "<leader>ll",
-     "<C-\\><C-N><C-w>l",
+     "<C-><C-N><C-w>l",
      {noremap = true}
 )
 vim.api.nvim_set_keymap(
@@ -266,8 +265,13 @@ vim.api.nvim_set_keymap(
      {noremap = true}
 )
 
---settings
+local set = vim.opt
 
+-- colors
+set.background = "dark"
+vim.cmd("colorscheme palenight")
+
+--settings
 vim.cmd(
 [[
 let g:currentmode={
@@ -307,7 +311,8 @@ vim.g.sh_fold_enabled = 5
 vim.g.loaded_matchit = 1
 vim.g.neoterm_autoscroll = 1
 
-local set = vim.opt
+set.termguicolors = true
+-- set.background = "dark"
 set.autoread = true
 set.inccommand = "nosplit"
 set.expandtab = true
@@ -329,7 +334,6 @@ set.sw = 4
 set.swapfile = false
 set.mouse = "a"
 set.ttimeoutlen = 10
-set.background = "dark"
 set.hlsearch = true
 set.completeopt = "longest,menuone"
 set.conceallevel = 0
@@ -337,14 +341,100 @@ set.updatetime = 400
 -- set.shortmess += F
 set.laststatus = 2
 set.showmode = false
-set.statusline = ""
 vim.cmd("set formatoptions-=c formatoptions-=r formatoptions-=o")
 vim.cmd("set sessionoptions-=folds")
+-- status bar colors
+vim.api.nvim_create_autocmd("InsertEnter", {
+    pattern = "*",
+    command = "hi statusline guifg=black guibg=#d7afff ctermfg=black ctermbg=magenta"
+})
+vim.api.nvim_create_autocmd("InsertLeave", {
+    pattern = "*",
+    command = "hi statusline guifg=black guibg=#d7afff ctermfg=black ctermbg=cyan"
+})
+vim.cmd("hi statusline guifg=black guibg=#8fbfdc ctermfg=black ctermbg=cyan")
+
+vim.cmd("hi User1 ctermfg=007 ctermbg=239 guibg=#4e4e4e guifg=#adadad")
+vim.cmd("hi User2 ctermfg=007 ctermbg=236 guibg=#303030 guifg=#adadad")
+vim.cmd("hi User3 ctermfg=236 ctermbg=236 guibg=#303030 guifg=#303030")
+vim.cmd("hi User4 ctermfg=239 ctermbg=239 guibg=#4e4e4e guifg=#4e4e4e")
 
 local o = vim.o 
-o.statusline = o.statusline .. "%0*\\ %n\\"                               	-- Buffer number
-o.statusline = o.statusline .. "%0*\\ %{toupper(g:currentmode[mode()])}\\"  	-- The current mode
-o.statusline = o.statusline .. "%1*\\ %<%F%m%r%h%w\\"                       	-- File path, modified, readonly, helpfile, preview
-o.statusline = o.statusline .. "%2*\\ %Y\\"                                 	-- FileType
-o.statusline = o.statusline .. "%5*\\ %{FugitiveHead()}\\" 
+o.statusline = ""
+o.statusline = o.statusline .. "%0* %n "                               	-- Buffer number
+o.statusline = o.statusline .. "%0* %{toupper(g:currentmode[mode()])} "  	-- The current mode
+o.statusline = o.statusline .. "%1* %<%F%m%r%h%w "                       	-- File path, modified, readonly, helpfile, preview
+o.statusline = o.statusline .. "%2* %Y "                                 	-- FileType
+o.statusline = o.statusline .. "%0* %{FugitiveHead()} " 
 o.statusline = o.statusline .. "%3*"
+
+
+-- autocommands
+local vimrc = vim.api.nvim_create_augroup('vimrc', {clear = true})
+vim.api.nvim_create_autocmd(
+"FileType", {
+    pattern = "make",
+    group = vimrc,
+    command = "setlocal noexpandtab"
+}
+)
+vim.api.nvim_create_autocmd(
+"FileType",
+{
+    pattern = "rmd",
+    group = vimrc,
+    command = "setlocal commentstring=#%s"
+}
+)
+vim.api.nvim_create_autocmd(
+"FileType", {
+    pattern = "cpp",
+    group = vimrc,
+    command = "setlocal commentstring=//%s"
+}
+)
+vim.api.nvim_create_autocmd(
+"FileType", {
+    pattern = "tex",
+    group = vimrc,
+    command = "setlocal spell spelllang=en_us"
+}
+)
+vim.api.nvim_create_autocmd(
+"BufEnter", {
+    pattern = "term://*",
+    group = vimrc,
+    command = "wincmd + | wincmd - | wincmd < | wincmd >"
+}
+)
+vim.api.nvim_create_autocmd(
+"FileType", {
+    pattern = "crontab",
+    group = vimrc,
+    command = "setlocal nobackup nowritebackup"
+}
+)
+
+local snakemake = vim.api.nvim_create_augroup("snakemake", {clear = true})
+vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+    pattern = "Snakefile",
+    group = snakemake,
+    command = "set syntax=snakemake"
+})
+vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+    pattern = "*.snake",
+    group = snakemake,
+    command = "set syntax=snakemake"
+})
+
+-- local tags = vim.api.nvim_create_augroup("tags", {clear = true})
+-- vim.api.nvim_create_autocmd("VimEnter",{
+--     pattern = "*", 
+--     group = tags,
+--     command = "call SetTags(trim(system('git rev-parse --show-toplevel')) . '/.tags')"
+-- })
+-- vim.api.nvim_create_autocmd("DirChanged", {
+--     pattern = "*",
+--     group = tags,
+--     command = "call SetTags(trim(system('git rev-parse --show-toplevel')) . '/.tags')"
+-- })
