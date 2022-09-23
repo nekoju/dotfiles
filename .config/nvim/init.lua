@@ -1,5 +1,4 @@
 require "paq" {
-    "savq/paq-nvim";   
     "andymass/vim-matchup";
     "chrisbra/csv.vim";
     -- "dag/vim-fish";
@@ -16,13 +15,13 @@ require "paq" {
     "neovim/nvim-lspconfig";
     "nathanaelkane/vim-indent-guides";
     "tmhedberg/SimpylFold";
+    "savq/paq-nvim";   
     "tpope/vim-commentary";
     "tpope/vim-fugitive";
     "tpope/vim-surround";
     "Vimjas/vim-python-pep8-indent";
     "vim-pandoc/vim-pandoc-syntax";
     "wesQ3/vim-windowswap";
-    "w0rp/ale";
     -- main one
     {"ms-jpq/coq_nvim", branch="coq"};
     -- 9000+ Snippets
@@ -301,7 +300,6 @@ let g:currentmode={
 
     vim.g.coq_settings = {auto_start = 'shut-up'}
     vim.g.slime_target = "neovim"
-    vim.g.python3_host_prog = "/usr/local/Caskroom/miniconda/base/bin/python"
     -- vim.call("let $VIMHOME = expand('<sfile>:p:h')")
     vim.g.black_running = 0
     vim.g['pandoc#keyboard#use_default_mappings'] = 0
@@ -311,6 +309,7 @@ let g:currentmode={
     vim.g.sh_fold_enabled = 5
     vim.g.loaded_matchit = 1
     vim.g.neoterm_autoscroll = 1
+    vim.g.python3_host_prog = "/usr/local/bin/python3"
 
     set.termguicolors = true
     -- set.background = "dark"
@@ -354,7 +353,7 @@ let g:currentmode={
     o.statusline = o.statusline .. "%#StatusLineNC# %Y "                                 	-- FileType
     o.statusline = o.statusline .. "%#DiffAdd# %{FugitiveHead()} " 
     o.statusline = o.statusline .. "%#StatusLine#"
-    
+
     -- local statuscolor = vim.api.nvim_create_augroup("statuscolor", {clear = true})
     -- vim.api.nvim_create_autocmd("InsertEnter", {
     --     pattern = "*",
