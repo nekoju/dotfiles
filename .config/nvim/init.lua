@@ -272,8 +272,7 @@ set.background = "dark"
 vim.cmd("colorscheme palenight")
 
 --settings
-vim.cmd(
-[[
+vim.cmd([[
 let g:currentmode={
     \ 'n'  : 'Normal',
     \ 'no' : 'Normal·Operator Pending',
@@ -295,146 +294,146 @@ let g:currentmode={
     \ '!'  : 'Shell',
     \ 't'  : 'Terminal'
     \}
-    ]]
-    )
+]])
 
-    vim.g.coq_settings = {auto_start = 'shut-up'}
-    vim.g.slime_target = "neovim"
-    -- vim.call("let $VIMHOME = expand('<sfile>:p:h')")
-    vim.g.black_running = 0
-    vim.g['pandoc#keyboard#use_default_mappings'] = 0
-    vim.g.fzf_layout = {down = '40%'}
-    vim.g.r_syntax_folding = 1
-    vim.g.tex_fold_enabled = 1
-    vim.g.sh_fold_enabled = 5
-    vim.g.loaded_matchit = 1
-    vim.g.neoterm_autoscroll = 1
-    vim.g.python3_host_prog = "/usr/local/bin/python3"
+vim.g.coq_settings = {auto_start = "shut-up"}
+vim.g.slime_target = "neovim"
+-- vim.call("let $VIMHOME = expand('<sfile>:p:h')")
+vim.g.black_running = 0
+vim.g['pandoc#keyboard#use_default_mappings'] = 0
+vim.g.fzf_layout = {down = '40%'}
+vim.g.r_syntax_folding = 1
+vim.g.tex_fold_enabled = 1
+vim.g.sh_fold_enabled = 5
+vim.g.loaded_matchit = 1
+vim.g.neoterm_autoscroll = 1
+vim.g.python3_host_prog = "/usr/local/bin/python3"
 
-    set.termguicolors = true
-    -- set.background = "dark"
-    set.autoread = true
-    set.inccommand = "nosplit"
-    set.expandtab = true
-    set.shiftwidth = 4
-    set.tabstop = 4
-    set.foldmethod = "syntax"
-    set.wildmode = "longest,list"
-    set.wildmenu = false
-    set.breakindent = true
-    set.colorcolumn = "80"
-    set.cursorline = true
-    set.number = true
-    set.linebreak = true
-    set.ignorecase = true
-    set.smartcase = true
-    set.enc = "utf8"
-    set.ruler = false
-    set.sw = 4
-    set.swapfile = false
-    set.mouse = "a"
-    set.ttimeoutlen = 10
-    set.hlsearch = true
-    set.completeopt = "longest,menuone"
-    set.conceallevel = 0
-    set.updatetime = 400
-    -- set.shortmess += F
-    set.laststatus = 2
-    set.showmode = false
-    vim.cmd("set formatoptions-=c formatoptions-=r formatoptions-=o")
-    vim.cmd("set sessionoptions-=folds")
+set.termguicolors = true
+-- set.background = "dark"
+set.autoread = true
+set.inccommand = "nosplit"
+set.expandtab = true
+set.shiftwidth = 4
+set.tabstop = 4
+set.foldmethod = "syntax"
+set.wildmode = "longest,list"
+set.wildmenu = false
+set.breakindent = true
+set.colorcolumn = "80"
+set.cursorline = true
+set.number = true
+set.linebreak = true
+set.ignorecase = true
+set.smartcase = true
+set.enc = "utf8"
+set.ruler = false
+set.sw = 4
+set.swapfile = false
+set.mouse = "a"
+set.ttimeoutlen = 10
+set.hlsearch = true
+set.completeopt = "longest,menuone"
+set.conceallevel = 0
+set.updatetime = 400
+-- set.shortmess += F
+set.laststatus = 2
+set.showmode = false
+vim.cmd("set formatoptions-=c formatoptions-=r formatoptions-=o")
+vim.cmd("set sessionoptions-=folds")
 
-    -- status bar colors
-    local o = vim.o 
-    o.statusline = ""
-    o.statusline = o.statusline .. "%#DiffAdd# %n "                               	-- Buffer number
-    o.statusline = o.statusline .. "%#DiffAdd# %{toupper(g:currentmode[mode()])} "  	-- The current mode
-    o.statusline = o.statusline .. "%#StatusLine# %<%F%m%r%h%w "                       	-- File path, modified, readonly, helpfile, preview
-    o.statusline = o.statusline .. "%#StatusLineNC# %Y "                                 	-- FileType
-    o.statusline = o.statusline .. "%#DiffAdd# %{FugitiveHead()} " 
-    o.statusline = o.statusline .. "%#StatusLine#"
+-- status bar colors
+local o = vim.o 
+local activestatus = "%#DiffAdd#"
+local inactivestatus = "%#StatusLine# %n %#WildMenu# %<%F%m%r%h%w "
+local statusline = ""
+statusline = statusline .. activestatus .. " %n "                               	-- Buffer number
+statusline = statusline .. activestatus .. " %{toupper(g:currentmode[mode()])} "  	-- The current mode
+statusline = statusline .. "%#StatusLine# %<%F%m%r%h%w "                       	-- File path, modified, readonly, helpfile, preview
+statusline = statusline .. "%#StatusLineNC# %Y "                                 	-- FileType
+statusline = statusline .. activestatus .. " %{FugitiveHead()} " 
+statusline = statusline .. "%#StatusLine#"
+o.statusline = statusline
+local status = vim.api.nvim_create_augroup("status", {clear = true})
+vim.api.nvim_create_autocmd(
+"WinLeave",{
+    pattern = "*",
+    group = status,
+    callback = function() vim.wo.statusline = inactivestatus end
+})
+vim.api.nvim_create_autocmd(
+"WinEnter",{
+    pattern = "*",
+    group = status,
+    callback = function () vim.wo.statusline = statusline end
+})
 
-    -- local statuscolor = vim.api.nvim_create_augroup("statuscolor", {clear = true})
-    -- vim.api.nvim_create_autocmd("InsertEnter", {
-    --     pattern = "*",
-    --     group = statuscolor,
-    --     command = "hi statusline guifg=black guibg=#d7afff ctermfg=black ctermbg=magenta"
-    -- })
-    -- vim.api.nvim_create_autocmd("InsertLeave", {
-    --     pattern = "*",
-    --     group = statuscolor,
-    --     command = "hi statusline guifg=black guibg=#d7afff ctermfg=black ctermbg=cyan"
-    -- })
-    -- vim.cmd("hi statusline guifg=black guibg=#8fbfdc ctermfg=black ctermbg=cyan")
+-- autocommands
+local vimrc = vim.api.nvim_create_augroup('vimrc', {clear = true})
+vim.api.nvim_create_autocmd(
+"FileType", {
+    pattern = "make",
+    group = vimrc,
+    command = "setlocal noexpandtab"
+}
+)
+vim.api.nvim_create_autocmd(
+"FileType",
+{
+    pattern = "rmd",
+    group = vimrc,
+    command = "setlocal commentstring=#%s"
+}
+)
+vim.api.nvim_create_autocmd(
+"FileType", {
+    pattern = "cpp",
+    group = vimrc,
+    command = "setlocal commentstring=//%s"
+}
+)
+vim.api.nvim_create_autocmd(
+"FileType", {
+    pattern = "tex",
+    group = vimrc,
+    command = "setlocal spell spelllang=en_us"
+}
+)
+vim.api.nvim_create_autocmd(
+"BufEnter", {
+    pattern = "term://*",
+    group = vimrc,
+    command = "wincmd + | wincmd - | wincmd < | wincmd >"
+}
+)
+vim.api.nvim_create_autocmd(
+"FileType", {
+    pattern = "crontab",
+    group = vimrc,
+    command = "setlocal nobackup nowritebackup"
+}
+)
 
+local snakemake = vim.api.nvim_create_augroup("snakemake", {clear = true})
+vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+    pattern = "Snakefile",
+    group = snakemake,
+    command = "set syntax=snakemake"
+})
+vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+    pattern = "*.snake",
+    group = snakemake,
+    command = "set syntax=snakemake"
+})
 
-
-    -- autocommands
-    local vimrc = vim.api.nvim_create_augroup('vimrc', {clear = true})
-    vim.api.nvim_create_autocmd(
-    "FileType", {
-        pattern = "make",
-        group = vimrc,
-        command = "setlocal noexpandtab"
-    }
-    )
-    vim.api.nvim_create_autocmd(
-    "FileType",
-    {
-        pattern = "rmd",
-        group = vimrc,
-        command = "setlocal commentstring=#%s"
-    }
-    )
-    vim.api.nvim_create_autocmd(
-    "FileType", {
-        pattern = "cpp",
-        group = vimrc,
-        command = "setlocal commentstring=//%s"
-    }
-    )
-    vim.api.nvim_create_autocmd(
-    "FileType", {
-        pattern = "tex",
-        group = vimrc,
-        command = "setlocal spell spelllang=en_us"
-    }
-    )
-    vim.api.nvim_create_autocmd(
-    "BufEnter", {
-        pattern = "term://*",
-        group = vimrc,
-        command = "wincmd + | wincmd - | wincmd < | wincmd >"
-    }
-    )
-    vim.api.nvim_create_autocmd(
-    "FileType", {
-        pattern = "crontab",
-        group = vimrc,
-        command = "setlocal nobackup nowritebackup"
-    }
-    )
-
-    local snakemake = vim.api.nvim_create_augroup("snakemake", {clear = true})
-    vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
-        pattern = "Snakefile",
-        group = snakemake,
-        command = "set syntax=snakemake"
-    })
-    vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
-        pattern = "*.snake",
-        group = snakemake,
-        command = "set syntax=snakemake"
-    })
-
-    -- local tags = vim.api.nvim_create_augroup("tags", {clear = true})
-    -- vim.api.nvim_create_autocmd("VimEnter",{
-    --     pattern = "*", 
-    --     group = tags,
-    --     command = "call SetTags(trim(system('git rev-parse --show-toplevel')) . '/.tags')"
-    -- })
-    -- vim.api.nvim_create_autocmd("DirChanged", {
-    --     pattern = "*",
-    --     group = tags,
-    --     command = "call SetTags(trim(system('git rev-parse --show-toplevel')) . '/.tags')"
-    -- })
+-- local tags = vim.api.nvim_create_augroup("tags", {clear = true})
+-- vim.api.nvim_create_autocmd("VimEnter",{
+--     pattern = "*", 
+--     group = tags,
+--     command = "call SetTags(trim(system('git rev-parse --show-toplevel')) . '/.tags')"
+-- })
+-- vim.api.nvim_create_autocmd("DirChanged", {
+--     pattern = "*",
+--     group = tags,
+--     command = "call SetTags(trim(system('git rev-parse --show-toplevel')) . '/.tags')"
+-- })
