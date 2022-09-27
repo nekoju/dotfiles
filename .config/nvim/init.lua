@@ -187,11 +187,17 @@ vim.api.nvim_set_keymap(
 {noremap = true}
 )
 vim.api.nvim_set_keymap(
-"",
+"n",
 "<leader>bl",
-":call Toggle_black_running()<CR>",
-{}
+":! black % > /dev/null<CR>",
+{noremap = true}
 )
+-- vim.api.nvim_set_keymap(
+-- "",
+-- "<leader>bl",
+-- ":call Toggle_black_running()<CR>",
+-- {}
+-- )
 vim.api.nvim_set_keymap(
 "t",
 "<leader>hh",
@@ -346,12 +352,17 @@ vim.cmd("set sessionoptions-=folds")
 local o = vim.o 
 local activestatus = "%#DiffAdd#"
 local inactivestatus = "%#StatusLine# %n %#WildMenu# %<%F%m%r%h%w "
+local venv = vim.api.nvim_eval([[
+    substitute(system("bash -c 'venv=${VIRTUAL_ENV%/*} \\
+    && echo ${venv##*/}'"), "\n", "", "g")
+]])
 local statusline = ""
 statusline = statusline .. activestatus .. " %n "                               	-- Buffer number
 statusline = statusline .. activestatus .. " %{toupper(g:currentmode[mode()])} "  	-- The current mode
 statusline = statusline .. "%#StatusLine# %<%F%m%r%h%w "                       	-- File path, modified, readonly, helpfile, preview
 statusline = statusline .. "%#StatusLineNC# %Y "                                 	-- FileType
-statusline = statusline .. activestatus .. " %{FugitiveHead()} " 
+statusline = statusline .. activestatus .. " %{FugitiveHead()} | " 
+statusline = statusline .. activestatus .. venv
 statusline = statusline .. "%#StatusLine#"
 o.statusline = statusline
 local status = vim.api.nvim_create_augroup("status", {clear = true})
