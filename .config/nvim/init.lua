@@ -356,14 +356,16 @@ local venv = vim.api.nvim_eval([[
     substitute(system("bash -c 'venv=${VIRTUAL_ENV%/*} \\
     && echo ${venv##*/}'"), "\n", "", "g")
 ]])
+local gitdir = vim.api.nvim_eval([[system("bash -c 'git rev-parse --show-toplevel'")]])
+local path = vim.api.nvim_eval([[expand('%:p')]])
 local statusline = ""
 statusline = statusline .. activestatus .. " %n "                               	-- Buffer number
 statusline = statusline .. activestatus .. " %{toupper(g:currentmode[mode()])} "  	-- The current mode
-statusline = statusline .. "%#StatusLine# %<%F%m%r%h%w "                       	-- File path, modified, readonly, helpfile, preview
+statusline = statusline .. "%#StatusLine# %<%{expand('%:~:.')}%m%r%h%w "                       	-- File path, modified, readonly, helpfile, preview
 statusline = statusline .. "%#StatusLineNC# %Y "                                 	-- FileType
 statusline = statusline .. activestatus .. " %{FugitiveHead()} | " 
 statusline = statusline .. activestatus .. venv
-statusline = statusline .. "%#StatusLine#"
+statusline = statusline .. " | %#StatusLine#"
 o.statusline = statusline
 local status = vim.api.nvim_create_augroup("status", {clear = true})
 vim.api.nvim_create_autocmd(
