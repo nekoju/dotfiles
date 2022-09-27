@@ -1,1 +1,3 @@
 
+unset HISTFILE
+export LESSHISTFILE="-"
