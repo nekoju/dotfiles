@@ -69,3 +69,5 @@ set -gx CPPFLAGS $CPPFLAGS "-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/
 
 
 fish_ssh_agent
+
+thefuck --alias | source
