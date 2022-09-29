@@ -189,7 +189,7 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
 "n",
 "<leader>bl",
-":! black % > /dev/null<CR>",
+":! black -l 79 % > /dev/null<CR>",
 {noremap = true}
 )
 -- vim.api.nvim_set_keymap(
