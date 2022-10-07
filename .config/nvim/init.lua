@@ -438,6 +438,12 @@ vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
     group = snakemake,
     command = "set syntax=snakemake"
 })
+vim.api.nvim_create_augroup("marks", {clear = True})
+vim.api.nvim_create_autocmd("WinLeave", {
+    pattern = "term://.*",
+    group = marks,
+    command = "mT"
+})
 
 -- local tags = vim.api.nvim_create_augroup("tags", {clear = true})
 -- vim.api.nvim_create_autocmd("VimEnter",{
