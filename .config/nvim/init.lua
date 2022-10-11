@@ -17,8 +17,7 @@ require "paq" {
     "neovim/nvim-lspconfig";
     "nathanaelkane/vim-indent-guides";
     "tmhedberg/SimpylFold";
-    "savq/paq-nvim";   
-    "tpope/vim-commentary";
+    "savq/paq-nvim";      "tpope/vim-commentary";
     "tpope/vim-fugitive";
     "tpope/vim-surround";
     "Vimjas/vim-python-pep8-indent";
@@ -159,7 +158,7 @@ vim.cmd("set formatoptions-=c formatoptions-=r formatoptions-=o")
 vim.cmd("set sessionoptions-=folds")
 
 -- status bar colors
-local o = vim.o 
+local o = vim.o
 local activestatus = "%#DiffAdd#"
 local inactivestatus = "%#StatusLine# %n %#WildMenu# %<%F%m%r%h%w "
 local venv = vim.api.nvim_eval([[
@@ -173,92 +172,35 @@ statusline = statusline .. activestatus .. " %n "                               
 statusline = statusline .. activestatus .. " %{toupper(g:currentmode[mode()])} "  	-- The current mode
 statusline = statusline .. "%#StatusLine# %<%{expand('%:~:.')}%m%r%h%w "                       	-- File path, modified, readonly, helpfile, preview
 statusline = statusline .. "%#StatusLineNC# %Y "                                 	-- FileType
-statusline = statusline .. activestatus .. " %{FugitiveHead()} | " 
-statusline = statusline .. activestatus .. venv
+statusline = statusline .. activestatus .. " %{FugitiveHead()} | "statusline = statusline .. activestatus .. venv
 statusline = statusline .. " | %#StatusLine#"
 o.statusline = statusline
-local status = vim.api.nvim_create_augroup("status", {clear = true})
-vim.api.nvim_create_autocmd(
-"WinLeave",{
-    pattern = "*",
-    group = status,
-    callback = function() vim.wo.statusline = inactivestatus end
-})
-vim.api.nvim_create_autocmd(
-"WinEnter",{
-    pattern = "*",
-    group = status,
-    callback = function () vim.wo.statusline = statusline end
-})
 
--- autocommands
+-- autocommand
 local vimrc = vim.api.nvim_create_augroup('vimrc', {clear = true})
-vim.api.nvim_create_autocmd(
-"FileType", {
-    pattern = "make",
-    group = vimrc,
-    command = "setlocal noexpandtab"
-}
-)
-vim.api.nvim_create_autocmd(
-"FileType",
-{
-    pattern = "rmd",
-    group = vimrc,
-    command = "setlocal commentstring=#%s"
-}
-)
-vim.api.nvim_create_autocmd(
-"FileType", {
-    pattern = "cpp",
-    group = vimrc,
-    command = "setlocal commentstring=//%s"
-}
-)
-vim.api.nvim_create_autocmd(
-"FileType", {
-    pattern = "tex",
-    group = vimrc,
-    command = "setlocal spell spelllang=en_us"
-}
-)
-vim.api.nvim_create_autocmd(
-"BufEnter", {
-    pattern = "term://*",
-    group = vimrc,
-    command = "wincmd + | wincmd - | wincmd < | wincmd >"
-}
-)
-vim.api.nvim_create_autocmd(
-"FileType", {
-    pattern = "crontab",
-    group = vimrc,
-    command = "setlocal nobackup nowritebackup"
-}
-)
-
 local snakemake = vim.api.nvim_create_augroup("snakemake", {clear = true})
-vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
-    pattern = "Snakefile",
-    group = snakemake,
-    command = "set syntax=snakemake"
-})
-vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
-    pattern = "*.snake",
-    group = snakemake,
-    command = "set syntax=snakemake"
-})
+local status = vim.api.nvim_create_augroup("status", {clear = true})
+local autocmds = {
+    {"WinLeave", {pattern = "*", group = status, callback = function() vim.wo.statusline = inactivestatus end}},
+    {"WinEnter", {pattern = "*", group = status, callback = function () vim.wo.statusline = statusline end}},
+    {"FileType", { pattern = "make", group = vimrc, command = "setlocal noexpandtab"}},
+    {"FileType", { pattern = "rmd", group = vimrc, command = "setlocal commentstring=#%s"}},
+    {"FileType", { pattern = "cpp", group = vimrc, command = "setlocal commentstring=//%s"}},
+    {"FileType", { pattern = "tex", group = vimrc, command = "setlocal spell spelllang=en_us"}},
+    {"BufEnter", { pattern = "term://*", group = vimrc, command = "wincmd + | wincmd - | wincmd < | wincmd >"}},
+    {"FileType", { pattern = "crontab", group = vimrc, command = "setlocal nobackup nowritebackup"}},
+    {{"BufNewFile", "BufRead"}, { pattern = "Snakefile", group = snakemake, command = "set syntax=snakemake"}},
+    {{"BufNewFile", "BufRead"}, { pattern = "*.snake", group = snakemake, command = "set syntax=snakemake"}},
+    {"WinLeave", { pattern = "term://.*", group = marks, command = "mT"}},
+}
+
+for i, cmd in ipairs(autocmds) do vim.api.nvim_create_autocmd(cmd[1], cmd[2]) end
+
 vim.api.nvim_create_augroup("marks", {clear = True})
-vim.api.nvim_create_autocmd("WinLeave", {
-    pattern = "term://.*",
-    group = marks,
-    command = "mT"
-})
 
 -- local tags = vim.api.nvim_create_augroup("tags", {clear = true})
 -- vim.api.nvim_create_autocmd("VimEnter",{
---     pattern = "*", 
---     group = tags,
+--     pattern = "*",--     group = tags,
 --     command = "call SetTags(trim(system('git rev-parse --show-toplevel')) . '/.tags')"
 -- })
 -- vim.api.nvim_create_autocmd("DirChanged", {
