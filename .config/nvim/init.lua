@@ -1,13 +1,15 @@
 require "paq" {
     "andymass/vim-matchup";
     "chrisbra/csv.vim";
-    -- "dag/vim-fish";
+    "dag/vim-fish";
     "drewtempelmeyer/palenight.vim";
     "elzr/vim-json";
     "fs111/pydoc.vim";
     "jeffkreeftmeijer/vim-numbertoggle";
     "jiangmiao/auto-pairs";
     "jpalardy/vim-slime";
+    "junegunn/fzf";
+    "junegunn/fzf.vim";
     "khaveesh/vim-fish-syntax";
     "Konfekt/FastFold";
     "lervag/vimtex";
@@ -36,240 +38,48 @@ require "paq" {
     -- - etc
 }
 
-vim.api.nvim_set_keymap(
-"x",
-"<Space>",
-"<Plug>SlimeRegionSend",
-{}
-)
-vim.api.nvim_set_keymap(
-"n",
-"<Space>",
-"<Plug>SlimeParagraphSend",
-{}
-)
-vim.api.nvim_set_keymap(
-"x",
-"<Space>",
-"<Plug>SlimeRegionSend",
-{}
-)
-vim.api.nvim_set_keymap(
-"n",
-"<Space>",
-"<Plug>SlimeParagraphSend",
-{}
-)
-vim.api.nvim_set_keymap(
-"",
-"<F4>",
-":set hlsearch! hlsearch?<CR>",
-{noremap = true}
-)
-vim.api.nvim_set_keymap(
-"",
-"<C-n>",
-":set relativenumber!<cr>",
-{noremap = true,
-silent = true}
-)
-vim.api.nvim_set_keymap(
-"n",
-"j",
-"gj",
-{noremap = true}
-)
-vim.api.nvim_set_keymap(
-"n",
-"k",
-"gk",
-{noremap = true}
-)
-vim.api.nvim_set_keymap(
-"n",
-"gj",
-"j",
-{noremap = true}
-)
-vim.api.nvim_set_keymap(
-"n",
-"gk",
-"k",
-{noremap = true}
-)
-vim.api.nvim_set_keymap(
-"",
-"<leader>swh",
-":topleft vnew<CR>",
-{noremap = true,
-silent = true}
-)
-vim.api.nvim_set_keymap(
-"",
-"<leader>swl",
-":botright vnew<CR>",
-{noremap = true,
-silent = true}
-)
-vim.api.nvim_set_keymap(
-"",
-"<leader>swk",
-":topleft new<CR>",
-{noremap = true,
-silent = true}
-)
-vim.api.nvim_set_keymap(
-"",
-"<leader>swj",
-":botright new<CR>",
-{noremap = true,
-silent = true}
-)
-vim.api.nvim_set_keymap(
-"",
-"<leader>sh",
-":leftabove vnew<CR>",
-{noremap = true,
-silent = true}
-)
-vim.api.nvim_set_keymap(
-"",
-"<leader>sl",
-":rightbelow vnew<CR>",
-{noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap(
-"",
-"<leader>sk",
-":leftabove new<CR>",
-{noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap(
-"",
-"<leader>sj",
-":rightbelow new<CR>",
-{noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap(
-"",
-"<F3>",
-":w !detex | wc -w<CR>",
-{noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap(
-"",
-"<F5>",
-":buffers<CR>:buffer<Space>",
-{noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap(
-"",
-"<leader>tj",
-":belowright new | resize 15 | set wfh | term<CR>",
-{noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap(
-"",
-"<leader>twj",
-":botright new | resize 15 | set wfh | term<CR>",
-{noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap(
-"",
-"<leader>twl",
-":botright vnew | vertical resize 100 | set wfw | term<CR>",
-{noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap(
-"n",
-"<leader>lc",
-":call ShowContext_toggle()<CR>",
-{noremap = true}
-)
-vim.api.nvim_set_keymap(
-"n",
-"<leader>bl",
-":! black -l 79 % > /dev/null<CR>",
-{noremap = true}
-)
--- vim.api.nvim_set_keymap(
--- "",
--- "<leader>bl",
--- ":call Toggle_black_running()<CR>",
--- {}
--- )
-vim.api.nvim_set_keymap(
-"t",
-"<leader>hh",
-"<C-\\><C-N><C-w>h",
-{noremap = true}
-)
-vim.api.nvim_set_keymap(
-"t",
-"<leader>jj",
-"<C-\\><C-N><C-w>j",
-{noremap = true}
-)
-vim.api.nvim_set_keymap(
-"t",
-"<leader>kk",
-"<C-\\><C-N><C-w>k",
-{noremap = true}
-)
-vim.api.nvim_set_keymap(
-"t",
-"<leader>ll",
-"<C-\\><C-N><C-w>l",
-{noremap = true}
-)
-vim.api.nvim_set_keymap(
-"i",
-"<leader>hh",
-"<C-]><C-w>h",
-{noremap = true}
-)
-vim.api.nvim_set_keymap(
-"i",
-"<leader>jj",
-"<C-]><C-w>j",
-{noremap = true}
-)
-vim.api.nvim_set_keymap(
-"i",
-"<leader>kk",
-"<C-]><C-w>k",
-{noremap = true}
-)
-vim.api.nvim_set_keymap(
-"i",
-"<leader>ll",
-"<C-]><C-w>l",
-{noremap = true}
-)
-vim.api.nvim_set_keymap(
-"n",
-"<leader>hh",
-"<C-w>h",
-{noremap = true}
-)
-vim.api.nvim_set_keymap(
-"n",
-"<leader>jj",
-"<C-w>j",
-{noremap = true}
-)
-vim.api.nvim_set_keymap(
-"n",
-"<leader>kk",
-"<C-w>k",
-{noremap = true}
-)
-vim.api.nvim_set_keymap(
-"n",
-"<leader>ll",
-"<C-w>l",
-{noremap = true}
-)
+
+local maps = {
+    {"x", "<Space>", "<Plug>SlimeRegionSend", {}},
+    {"n", "<Space>", "<Plug>SlimeParagraphSend", {}},
+    {"x", "<Space>", "<Plug>SlimeRegionSend", {}},
+    {"n", "<Space>", "<Plug>SlimeParagraphSend", {}},
+    {"", "<F4>", ":set hlsearch! hlsearch?<CR>", {noremap = true}},
+    {"", "<C-n>", ":set relativenumber!<cr>", {noremap = true, silent = true}},
+    {"n", "j", "gj", {noremap = true}},
+    {"n", "k", "gk", {noremap = true}},
+    {"n", "gj", "j", {noremap = true}},
+    {"n", "gk", "k", {noremap = true}},
+    {"", "<leader>swh", ":topleft vnew<CR>", {noremap = true, silent = true}},
+    {"", "<leader>swl", ":botright vnew<CR>", {noremap = true, silent = true}},
+    {"", "<leader>swk", ":topleft new<CR>", {noremap = true, silent = true}},
+    {"", "<leader>swj", ":botright new<CR>", {noremap = true, silent = true}},
+    {"", "<leader>sh", ":leftabove vnew<CR>", {noremap = true, silent = true}},
+    {"", "<leader>sl", ":rightbelow vnew<CR>", {noremap = true,  silent = true}},
+    {"", "<leader>sk", ":leftabove new<CR>", {noremap = true,  silent = true}},
+    {"", "<leader>sj", ":rightbelow new<CR>", {noremap = true,  silent = true}},
+    {"", "<F3>", ":w !detex | wc -w<CR>", {noremap = true,  silent = true}},
+    {"", "<F5>", ":buffers<CR>:buffer<Space>", {noremap = true,  silent = true}},
+    {"", "<leader>tj", ":belowright new | resize 15 | set wfh | term<CR>", {noremap = true,  silent = true}},
+    {"", "<leader>twj", ":botright new | resize 15 | set wfh | term<CR>", {noremap = true,  silent = true}},
+    {"", "<leader>twl", ":botright vnew | vertical resize 100 | set wfw | term<CR>", {noremap = true,  silent = true}},
+    {"n", "<leader>lc", ":call ShowContext_toggle{}<CR>", {noremap = true}},
+    {"n", "<leader>bl", ":! black -l 79 % > /dev/null<CR>", {noremap = true}},
+    {"t", "<leader>hh", "<C-\\><C-N><C-w>h", {noremap = true}},
+    {"t", "<leader>jj", "<C-\\><C-N><C-w>j", {noremap = true}},
+    {"t", "<leader>kk", "<C-\\><C-N><C-w>k", {noremap = true}},
+    {"t", "<leader>ll", "<C-\\><C-N><C-w>l", {noremap = true}},
+    {"i", "<leader>hh", "<C-]><C-w>h", {noremap = true}},
+    {"i", "<leader>jj", "<C-]><C-w>j", {noremap = true}},
+    {"i", "<leader>kk", "<C-]><C-w>k", {noremap = true}},
+    {"i", "<leader>ll", "<C-]><C-w>l", {noremap = true}},
+    {"n", "<leader>hh", "<C-w>h", {noremap = true}},
+    {"n", "<leader>jj", "<C-w>j", {noremap = true}},
+    {"n", "<leader>kk", "<C-w>k", {noremap = true}},
+    {"n", "<leader>ll", "<C-w>l", {noremap = true}}
+}
+
+for i, map in ipairs(maps) do vim.api.nvim_set_keymap(map[1], map[2], map[3], map[4]) end
 
 local set = vim.opt
 
