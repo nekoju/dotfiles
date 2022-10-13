@@ -39,10 +39,10 @@ require "paq" {
 
 
 local maps = {
-    {"x", "<Space>", "<Plug>SlimeRegionSend", {}},
-    {"n", "<Space>", "<Plug>SlimeParagraphSend", {}},
-    {"x", "<Space>", "<Plug>SlimeRegionSend", {}},
-    {"n", "<Space>", "<Plug>SlimeParagraphSend", {}},
+    {"x", "<Space>", "<Plug>SlimeRegionSend }j", {noremap = true}},
+    {"n", "<Space>", "<Plug>SlimeParagraphSend }j", {noremap = true}},
+    {"x", "<Space>", "<Plug>SlimeRegionSend }j", {noremap = true}},
+    {"n", "<Space>", "<Plug>SlimeParagraphSend }j", {noremap = true}},
     {"", "<F4>", ":set hlsearch! hlsearch?<CR>", {noremap = true}},
     {"", "<C-n>", ":set relativenumber!<cr>", {noremap = true, silent = true}},
     {"n", "j", "gj", {noremap = true}},
@@ -77,8 +77,25 @@ local maps = {
     {"n", "<leader>kk", "<C-w>k", {noremap = true}},
     {"n", "<leader>ll", "<C-w>l", {noremap = true}}
 }
-
 for i, map in ipairs(maps) do vim.api.nvim_set_keymap(map[1], map[2], map[3], map[4]) end
+
+-- autocommand
+local vimrc = vim.api.nvim_create_augroup('vimrc', {clear = true})
+local snakemake = vim.api.nvim_create_augroup("snakemake", {clear = true})
+local status = vim.api.nvim_create_augroup("status", {clear = true})
+local autocmds = {
+    {"WinEnter", {pattern = "*", group = status, callback = function () vim.wo.statusline = statusline end}},
+    {"FileType", { pattern = "make", group = vimrc, command = "setlocal noexpandtab"}},
+    {"FileType", { pattern = "rmd", group = vimrc, command = "setlocal commentstring=#%s"}},
+    {"FileType", { pattern = "cpp", group = vimrc, command = "setlocal commentstring=//%s"}},
+    {"FileType", { pattern = "tex", group = vimrc, command = "setlocal spell spelllang=en_us"}},
+    {"BufEnter", { pattern = "term://*", group = vimrc, command = "wincmd + | wincmd - | wincmd < | wincmd >"}},
+    {"FileType", { pattern = "crontab", group = vimrc, command = "setlocal nobackup nowritebackup"}},
+    {{"BufNewFile", "BufRead"}, { pattern = "Snakefile", group = snakemake, command = "set syntax=snakemake"}},
+    {{"BufNewFile", "BufRead"}, { pattern = "*.snake", group = snakemake, command = "set syntax=snakemake"}},
+    {"WinLeave", { pattern = "term://.*", group = marks, command = "mT"}},
+}
+for i, cmd in ipairs(autocmds) do vim.api.nvim_create_autocmd(cmd[1], cmd[2]) end
 
 local set = vim.opt
 
@@ -113,6 +130,7 @@ let g:currentmode={
 
 vim.g.coq_settings = {auto_start = "shut-up", keymap = {eval_snips = "<leader>ss"}}
 vim.g.slime_target = "neovim"
+vim.g.slime_python_ipython = 1
 -- vim.call("let $VIMHOME = expand('<sfile>:p:h')")
 vim.g.black_running = 0
 vim.g['pandoc#keyboard#use_default_mappings'] = 0
@@ -176,25 +194,6 @@ statusline = statusline .. activestatus .. " %{FugitiveHead()} | "statusline = s
 statusline = statusline .. " | %#StatusLine#"
 o.statusline = statusline
 
--- autocommand
-local vimrc = vim.api.nvim_create_augroup('vimrc', {clear = true})
-local snakemake = vim.api.nvim_create_augroup("snakemake", {clear = true})
-local status = vim.api.nvim_create_augroup("status", {clear = true})
-local autocmds = {
-    {"WinLeave", {pattern = "*", group = status, callback = function() vim.wo.statusline = inactivestatus end}},
-    {"WinEnter", {pattern = "*", group = status, callback = function () vim.wo.statusline = statusline end}},
-    {"FileType", { pattern = "make", group = vimrc, command = "setlocal noexpandtab"}},
-    {"FileType", { pattern = "rmd", group = vimrc, command = "setlocal commentstring=#%s"}},
-    {"FileType", { pattern = "cpp", group = vimrc, command = "setlocal commentstring=//%s"}},
-    {"FileType", { pattern = "tex", group = vimrc, command = "setlocal spell spelllang=en_us"}},
-    {"BufEnter", { pattern = "term://*", group = vimrc, command = "wincmd + | wincmd - | wincmd < | wincmd >"}},
-    {"FileType", { pattern = "crontab", group = vimrc, command = "setlocal nobackup nowritebackup"}},
-    {{"BufNewFile", "BufRead"}, { pattern = "Snakefile", group = snakemake, command = "set syntax=snakemake"}},
-    {{"BufNewFile", "BufRead"}, { pattern = "*.snake", group = snakemake, command = "set syntax=snakemake"}},
-    {"WinLeave", { pattern = "term://.*", group = marks, command = "mT"}},
-}
-
-for i, cmd in ipairs(autocmds) do vim.api.nvim_create_autocmd(cmd[1], cmd[2]) end
 
 vim.api.nvim_create_augroup("marks", {clear = True})
 
