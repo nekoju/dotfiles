@@ -39,6 +39,7 @@ require "paq" {
 
 
 local maps = {
+    {"n", "<C-w><C-j>", ":echo b:terminal_job_id<CR>", {noremap = true}},
     {"x", "<Space>", "<Plug>SlimeRegionSend }j", {noremap = true}},
     {"n", "<Space>", "<Plug>SlimeParagraphSend }j", {noremap = true}},
     {"x", "<Space>", "<Plug>SlimeRegionSend }j", {noremap = true}},
