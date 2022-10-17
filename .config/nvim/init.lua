@@ -80,12 +80,32 @@ local maps = {
 }
 for i, map in ipairs(maps) do vim.api.nvim_set_keymap(map[1], map[2], map[3], map[4]) end
 
+-- status bar colors
+local o = vim.o
+local activestatus = "%#DiffAdd#"
+local inactivestatus = "%#StatusLine# %n %#StatusLine# %<%F%m%r%h%w "
+local venv = vim.api.nvim_eval([[
+    substitute(system("bash -c 'venv=${VIRTUAL_ENV%/*} \\
+    && echo ${venv##*/}'"), "\n", "", "g")
+]])
+local gitdir = vim.api.nvim_eval([[system("bash -c 'git rev-parse --show-toplevel'")]])
+local path = vim.api.nvim_eval([[expand('%:p')]])
+local statusline = ""
+statusline = statusline .. activestatus .. " %n "                               	-- Buffer number
+statusline = statusline .. activestatus .. " %{toupper(g:currentmode[mode()])} "  	-- The current mode
+statusline = statusline .. "%#WildMenu# %<%{expand('%:~:.')}%m%r%h%w "                       	-- File path, modified, readonly, helpfile, preview
+statusline = statusline .. "%#StatusLineNC# %Y "                                 	-- FileType
+statusline = statusline .. activestatus .. " %{FugitiveHead()} | "statusline = statusline .. activestatus .. venv
+statusline = statusline .. " | %#WildMenu#"
+o.statusline = statusline
 -- autocommand
+
 local vimrc = vim.api.nvim_create_augroup('vimrc', {clear = true})
 local snakemake = vim.api.nvim_create_augroup("snakemake", {clear = true})
 local status = vim.api.nvim_create_augroup("status", {clear = true})
 local autocmds = {
     {"WinEnter", {pattern = "*", group = status, callback = function () vim.wo.statusline = statusline end}},
+    {"WinLeave", {pattern = "*", group = status, callback = function () vim.wo.statusline = inactivestatus end}},
     {"FileType", { pattern = "make", group = vimrc, command = "setlocal noexpandtab"}},
     {"FileType", { pattern = "rmd", group = vimrc, command = "setlocal commentstring=#%s"}},
     {"FileType", { pattern = "cpp", group = vimrc, command = "setlocal commentstring=//%s"}},
@@ -176,24 +196,6 @@ set.showmode = false
 vim.cmd("set formatoptions-=c formatoptions-=r formatoptions-=o")
 vim.cmd("set sessionoptions-=folds")
 
--- status bar colors
-local o = vim.o
-local activestatus = "%#DiffAdd#"
-local inactivestatus = "%#StatusLine# %n %#WildMenu# %<%F%m%r%h%w "
-local venv = vim.api.nvim_eval([[
-    substitute(system("bash -c 'venv=${VIRTUAL_ENV%/*} \\
-    && echo ${venv##*/}'"), "\n", "", "g")
-]])
-local gitdir = vim.api.nvim_eval([[system("bash -c 'git rev-parse --show-toplevel'")]])
-local path = vim.api.nvim_eval([[expand('%:p')]])
-local statusline = ""
-statusline = statusline .. activestatus .. " %n "                               	-- Buffer number
-statusline = statusline .. activestatus .. " %{toupper(g:currentmode[mode()])} "  	-- The current mode
-statusline = statusline .. "%#StatusLine# %<%{expand('%:~:.')}%m%r%h%w "                       	-- File path, modified, readonly, helpfile, preview
-statusline = statusline .. "%#StatusLineNC# %Y "                                 	-- FileType
-statusline = statusline .. activestatus .. " %{FugitiveHead()} | "statusline = statusline .. activestatus .. venv
-statusline = statusline .. " | %#StatusLine#"
-o.statusline = statusline
 
 
 vim.api.nvim_create_augroup("marks", {clear = True})
