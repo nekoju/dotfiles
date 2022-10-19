@@ -63,7 +63,7 @@ local maps = {
     {"", "<leader>tj", ":belowright new | resize 15 | set wfh | term<CR>", {noremap = true,  silent = true}},
     {"", "<leader>twj", ":botright new | resize 15 | set wfh | term<CR>", {noremap = true,  silent = true}},
     {"", "<leader>twl", ":botright vnew | vertical resize 100 | set wfw | term<CR>", {noremap = true,  silent = true}},
-    {"n", "<leader>lc", ":call ShowContext_toggle{}<CR>", {noremap = true}},
+    {"n", "<leader>lc", ":call ShowContext_toggle()<CR>", {noremap = true}},
     {"n", "<leader>bl", ":! black -l 79 % > /dev/null<CR>", {noremap = true}},
     {"t", "<leader>hh", "<C-\\><C-N><C-w>h", {noremap = true}},
     {"t", "<leader>jj", "<C-\\><C-N><C-w>j", {noremap = true}},
