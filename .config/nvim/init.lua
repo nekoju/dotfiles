@@ -83,7 +83,7 @@ for i, map in ipairs(maps) do vim.api.nvim_set_keymap(map[1], map[2], map[3], ma
 -- status bar colors
 local o = vim.o
 local activestatus = "%#DiffAdd#"
-local inactivestatus = "%#StatusLine# %n %#StatusLine# %<%F%m%r%h%w "
+local inactivestatus = "%#StatusLine# %n %#WildMenu# %<%F%m%r%h%w "
 local venv = vim.api.nvim_eval([[
     substitute(system("bash -c 'venv=${VIRTUAL_ENV%/*} \\
     && echo ${venv##*/}'"), "\n", "", "g")
