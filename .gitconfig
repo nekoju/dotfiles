@@ -2,7 +2,7 @@
 	email = mpjuers@indiana.edu
 	name = Neko Juers
 [core]
-	excludesfile = /Users/mpjuers/.gitignore_global
+	excludesfile = /Users/nekoj/.gitignore_global
 	editor = nvim
 [alias]
 	tree = log --branches --remotes --tags --graph --decorate --pretty=oneline --abbrev-commit

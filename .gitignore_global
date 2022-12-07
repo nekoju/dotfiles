@@ -2,7 +2,7 @@
 .DS_Store
 Session.vim
 .tags
-.tags
+tags
 **/.DS_Store
 **/tags
 .venv
