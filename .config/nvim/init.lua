@@ -6,7 +6,6 @@ require "paq" {
     "elzr/vim-json";
     "fs111/pydoc.vim";
     "jeffkreeftmeijer/vim-numbertoggle";
-    "jiangmiao/auto-pairs";
     "jpalardy/vim-slime";
     "junegunn/fzf";
     "junegunn/fzf.vim";
@@ -14,8 +13,8 @@ require "paq" {
     "Konfekt/FastFold";
     "lervag/vimtex";
     "mpjuers/showcontext";
+    'nathanaelkane/vim-indent-guides';
     "neovim/nvim-lspconfig";
-    "nathanaelkane/vim-indent-guides";
     "tmhedberg/SimpylFold";
     "savq/paq-nvim";      "tpope/vim-commentary";
     "tpope/vim-fugitive";
@@ -37,9 +36,14 @@ require "paq" {
     -- - etc
 }
 
-
 local maps = {
-    {"n", "<C-w><C-j>", ":echo b:terminal_job_id<CR>", {noremap = true}},
+    {"i", "<silent><expr> <Esc>", 'pumvisible() ? "\\<C-e><Esc>" : "\\<Esc>"', {noremap = true}},
+    {"i", "<silent><expr> <C-c>", 'pumvisible() ? "\\<C-e><C-c>" : "\\<C-c>"', {noremap = true}},
+    {"i", "<silent><expr> <BS>", 'pumvisible() ? "\\<C-e><BS>"  : "\\<BS>"', {noremap = true}},
+    {"i", "<silent><expr> <C-l>", 'pumvisible() ? (complete_info().selected == -1 ? "\\<C-e><CR>" : "\\<C-y>") : "\\<C-l>"', {noremap = true}},
+    {"i", "<silent><expr> <Tab>", 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {noremap = true}},
+    {"i", "<silent><expr> <S-Tab>", 'pumvisible() ? "\\<C-p>" : "\\<BS>"', {noremap = true}},
+    {"n", "<C-w><C-j>", ":SlimeConfig<CR> b:terminal_job_id<CR>", {noremap = true}},
     {"x", "<Space>", "<Plug>SlimeRegionSend }j", {noremap = true}},
     {"n", "<Space>", "<Plug>SlimeParagraphSend }j", {noremap = true}},
     {"x", "<Space>", "<Plug>SlimeRegionSend }j", {noremap = true}},
@@ -162,6 +166,8 @@ vim.g.sh_fold_enabled = 5
 vim.g.loaded_matchit = 1
 vim.g.neoterm_autoscroll = 1
 vim.g.python3_host_prog = "/usr/local/bin/python3"
+vim.g.indent_guides_enable_on_vim_startup = 1
+vim.g.indent_guides_guide_size = 1
 
 set.termguicolors = true
 -- set.background = "dark"
