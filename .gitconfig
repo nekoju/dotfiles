@@ -1,6 +1,6 @@
 [user]
-	email = mpjuers@indiana.edu
 	name = Neko Juers
+    email = mpjuers@indiana.edu
 [core]
 	excludesfile = /Users/nekoj/.gitignore_global
 	editor = nvim
