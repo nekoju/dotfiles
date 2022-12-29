@@ -1,0 +1,3 @@
+function alacritty
+    command env WINIT_HIDPI_FACTOR=1.0 alacritty
+end

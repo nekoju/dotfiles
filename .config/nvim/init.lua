@@ -94,7 +94,7 @@ for i, map in ipairs(maps) do vim.api.nvim_set_keymap(map[1], map[2], map[3], ma
 -- status bar colors
 local o = vim.o
 local activestatus = "%#DiffAdd#"
-local inactivestatus = "%#StatusLine# %n %#WildMenu# %<%F%m%r%h%w "
+local inactivestatus = "%#TermCursor# %n %#SpellCap# %<%F%m%r%h%w %#TermCursor#"
 local venv = vim.api.nvim_eval([[
     substitute(system("bash -c 'venv=${VIRTUAL_ENV%/*} \\
     && echo ${venv##*/}'"), "\n", "", "g")
@@ -104,10 +104,10 @@ local path = vim.api.nvim_eval([[expand('%:p')]])
 local statusline = ""
 statusline = statusline .. activestatus .. " %n "                               	-- Buffer number
 statusline = statusline .. activestatus .. " %{toupper(g:currentmode[mode()])} "  	-- The current mode
-statusline = statusline .. "%#WildMenu# %<%{expand('%:~:.')}%m%r%h%w "                       	-- File path, modified, readonly, helpfile, preview
-statusline = statusline .. "%#StatusLineNC# %Y "                                 	-- FileType
+statusline = statusline .. "%#SpellCap# %<%{expand('%:~:.')}%m%r%h%w "                       	-- File path, modified, readonly, helpfile, preview
+statusline = statusline .. "%#TermCursorNC# %Y "                                 	-- FileType
 statusline = statusline .. activestatus .. " %{FugitiveHead()} | "statusline = statusline .. activestatus .. venv
-statusline = statusline .. " | %#WildMenu#"
+statusline = statusline .. " | %#SpellCap#"
 o.statusline = statusline
 -- autocommand
 

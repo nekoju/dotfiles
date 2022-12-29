@@ -6,13 +6,14 @@
 # set gray (set_color -o black)
 set -Ux VISUAL nvim
 set -Ux EDITOR $VISUAL
+
+# set -Ux TERMINFO_DIRS /usr/share/terminfo $HOME/.local/share/terminfo/74
+set -Ux TERM tmux-256color
 # source (dirname (status -f))/init.fish
 
 # if tmux is executable and not inside a tmux session, then try to attach.
 # if attachment fails, start a new session
 
-# set -x TERMINFO $TERMINFO $HOME/.local/share/terminfo/74/
-set -x TERM tmux-256color
 if status is-interactive
 and not set -q TMUX
     exec tmux

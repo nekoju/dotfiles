@@ -4,15 +4,13 @@ set-option -g prefix C-a
 bind-key a send-prefix
 
 set-option default-terminal "tmux-256color"
-set-option -a terminal-overrides ",*256color*:Tc"
+# set-option -a terminal-overrides ",*256color*:Tc"
 set-option -g default-shell /usr/local/bin/fish
 unbind t
 bind t new-window
 unbind n
 bind C-] next-window
 bind C-[ previous-window
-
-set-option -sa terminal-overrides ',tmux-256color:RGB'
 
 # split panes using | and -
 unbind '"'
