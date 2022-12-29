@@ -37,6 +37,13 @@ require "paq" {
 }
 
 local maps = {
+    {"i", "((", "()<left>", {noremap=true}},
+    {"i", "[[", "[]<left>", {noremap=true}},
+    {"i", "{{", "{}<left>", {noremap=true}},
+    {"i", "<<", "<><left>", {noremap=true}},
+    {"i", "(((", "(<CR>)<ESC>O<tab>", {noremap=true}},
+    {"i", "[[[", "[<CR>]<ESC>O<tab>", {noremap=true}},
+    {"i", "{{{", "{<CR>}<ESC>O<tab>", {noremap=true}},
     {"i", "<silent><expr> <Esc>", 'pumvisible() ? "\\<C-e><Esc>" : "\\<Esc>"', {noremap = true}},
     {"i", "<silent><expr> <C-c>", 'pumvisible() ? "\\<C-e><C-c>" : "\\<C-c>"', {noremap = true}},
     {"i", "<silent><expr> <BS>", 'pumvisible() ? "\\<C-e><BS>"  : "\\<BS>"', {noremap = true}},
