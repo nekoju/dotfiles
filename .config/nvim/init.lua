@@ -174,6 +174,7 @@ vim.g.loaded_matchit = 1
 vim.g.neoterm_autoscroll = 1
 vim.g.python3_host_prog = "/usr/local/bin/python3"
 vim.g.indent_guides_enable_on_vim_startup = 1
+vim.g.pydoc_cmd = 'python -m pydoc' 
 vim.g.indent_guides_guide_size = 1
 
 set.termguicolors = true
