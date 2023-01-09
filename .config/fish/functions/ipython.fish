@@ -1,3 +1,3 @@
-function ipython --description 'alias ipython bash -c ipython'
-  bash -c ipython $argv; 
+function ipython --description 'alias ipython ipython --matplotlib'
+ command ipython --matplotlib $argv; 
 end
