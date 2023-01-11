@@ -1,5 +1,6 @@
 [user]
 	name = Neko Juers
+	email = neko.juers@gmail.com
 [core]
 	excludesfile = /Users/nekoj/.gitignore_global
 	editor = nvim

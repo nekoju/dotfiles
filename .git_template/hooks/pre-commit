@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "Formatting python code using Black."
+black -l 79 $(git ls-tree -r master --name-only | grep ".*\.py")
+echo "Running unit tests."
+pytest
