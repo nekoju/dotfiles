@@ -38,13 +38,13 @@ set -gx LDFLAGS $LDFLAGS "-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/ll
 set -gx CPPFLAGS $CPPFLAGS "-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v1/"
 
 set -x ENABLE_USER_SITE "False"
-set -x PATH /opt/homebrew/bin $PATH
 set -x PATH /opt/local/bin /opt/local/sbin $PATH
 set -x MANPATH /opt/local/share/man (manpath)
 set -x PATH $HOME/bin $PATH
 set -x PATH $HOME/.cargo/bin $PATH
 set -x PATH $HOME/.gitaliases $PATH
-set -x PATH /opt/homebrew/ $PATH
+set -x PATH /usr/local/bin $PATH
+set -x PATH /usr/local/cmake/bin $PATH
 
 # set -gx LDFLAGS "-L/usr/local/opt/bzip2/lib"
 # set -gx CPPFLAGS "-I/usr/local/opt/bzip2/include"
