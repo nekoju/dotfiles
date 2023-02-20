@@ -1,22 +1,22 @@
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 call plug#begin('~/.config/nvim/plugged/')
 Plug 'andymass/vim-matchup'
 Plug 'chrisbra/csv.vim'
+Plug 'dracula/vim'
 " Plug 'dag/vim-fish'
-Plug 'drewtempelmeyer/palenight.vim'
 Plug 'elzr/vim-json'
 Plug 'fs111/pydoc.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'jiangmiao/auto-pairs' 
-Plug 'jpalardy/vim-slime'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'khaveesh/vim-fish-syntax'
+" Plug 'jpalardy/vim-slime'
 Plug 'Konfekt/FastFold'
-Plug 'lervag/vimtex'
 "" Why won't this work?
 " Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'mpjuers/showcontext'
-Plug 'neovim/nvim-lspconfig'
 Plug 'nathanaelkane/vim-indent-guides'
 "" To set up later
 " Plug 'spinks/vim-leader-guide'
@@ -26,47 +26,23 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'wesQ3/vim-windowswap'
-Plug 'w0rp/ale'
-" main one
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-" 9000+ Snippets
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-
-" lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
-" Need to **configure separately**
-
-Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
-" - shell repl
-" - nvim lua api
-" - scientific calculator
-" - comment banner
-" - etc
 call plug#end()
 
-" if &shell =~# 'fish$'
-"     set shell=sh
+" let g:slime_target="neovim"
+" xmap <Space> <Plug>SlimeRegionSend
+" nmap <Space> <Plug>SlimeParagraphSend
+
+" let g:slime_target="neovim"
+" xmap <Space> <Plug>SlimeRegionSend
+" nmap <Space> <Plug>SlimeParagraphSend
+
+" " Enable true color 启用终端24位色
+" if exists('+termguicolors')
+"   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"   set termguicolors
 " endif
-
-let g:coq_settings = { 'auto_start': 'shut-up' }
-let g:coq_settings = { 'keymap.eval_snips': '<leader>ss' }
-source /Users/nekoj/Dotfiles/.config/nvim/lspsetup.lua
-
-let g:slime_target="neovim"
-xmap <Space> <Plug>SlimeRegionSend
-nmap <Space> <Plug>SlimeParagraphSend
-
-let g:slime_target="neovim"
-xmap <Space> <Plug>SlimeRegionSend
-nmap <Space> <Plug>SlimeParagraphSend
-
-" Enable true color 启用终端24位色
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
 
 " remap Omni completion
 inoremap <leader>xx <C-X><C-O>
@@ -128,14 +104,6 @@ function! PythonAddTags(module)
 endfunction
 command! -nargs=1 Addtags call PythonAddTags(<f-args>)
 
-" latex to docx
-map <F8> :w !pandoc -o %.docx <CR>
-
-" " for completion menu
-" inoremap <expr><CR> pumvisible() ? "\<C-y>" : "\<C-g>u<CR>"
-" inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-"             \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-
 nnoremap <leader>lc :call ShowContext_toggle()<CR>
 
 " Switch black on and off.
@@ -168,10 +136,10 @@ let g:pandoc#keyboard#use_default_mappings = 0
 
 " Switching windows
 " In terminal
-tnoremap <leader>hh <C-\><C-N><C-w>h
-tnoremap <leader>jj <C-\><C-N><C-w>j
-tnoremap <leader>kk <C-\><C-N><C-w>k
-tnoremap <leader>ll <C-\><C-N><C-w>l
+" tnoremap <leader>hh <C-\><C-N><C-w>h
+" tnoremap <leader>jj <C-\><C-N><C-w>j
+" tnoremap <leader>kk <C-\><C-N><C-w>k
+" tnoremap <leader>ll <C-\><C-N><C-w>l
 " In insert mode
 inoremap <leader>hh <C-]><C-w>h
 inoremap <leader>jj <C-]><C-w>j
@@ -183,30 +151,12 @@ nnoremap <leader>jj <C-w>j
 nnoremap <leader>kk <C-w>k
 nnoremap <leader>ll <C-w>l
 
-" fzf mappings
-" - down / up / left / right
-let g:fzf_layout = { 'down': '40%' }
-nnoremap <C-p><C-p> :ProjectFiles<CR>
-inoremap <C-p><C-p> :ProjectFiles<CR>
-nnoremap <C-p><C-f> :Ag<CR>
-nnoremap <C-p><C-b> :Buffers<CR>
-nnoremap <C-p><C-m> :Marks<CR>
-nnoremap <C-m><C-w> :Windows<CR>
-nnoremap <C-p><C-h> :History:<CR>
-nnoremap <C-s><C-s> :Snippets<CR>
-nnoremap <C-p><C-c> :Commits<CR>
-nnoremap <C-p><C-a> :BCommits<CR>
-nnoremap <leader>ph :Helptags<CR>
-nnoremap <C-f> :Tags<CR>
-
-" two-key find
-
 if has('nvim')
     let $VISUAL = 'nvr -cc split --remote-wait'
 endif
 
 set autoread
-set inccommand=nosplit
+" set inccommand=nosplit
 " Tabs to spaces
 set expandtab
 set shiftwidth=4
@@ -245,8 +195,8 @@ set formatoptions-=c formatoptions-=r formatoptions-=o
 syntax on
 syntax enable
 set t_Co=256
-set background=dark
-colorscheme palenight
+" set background=dark
+colorscheme dracula
 
 " highlighting cursorline style
 highlight! link Visual cursorline
@@ -270,7 +220,7 @@ set conceallevel=0
 
 set updatetime=400
 
-set shortmess+=F
+" set shortmess+=F
 
 set sessionoptions-=folds
 
@@ -315,22 +265,11 @@ augroup Snakemake
     au BufNewFile,BufRead *.snake set syntax=snakemake
 augroup END
 
-" I need to figure out what problem this was trying to solve.
-function! SetTags(file)
-    if filereadable(a:file)
-        let &tags = " " . a:file . ";" . $HOME
-    elseif filereadable("./tags")
-        let &tags = " ./tags" . ";" . $HOME
-    else
-        return 0
-    endif
-endfunction
-
-augroup Tags
-    autocmd!
-    autocmd VimEnter * call SetTags(trim(system("git rev-parse --show-toplevel")) . "/.tags")
-    autocmd DirChanged * call SetTags(trim(system("git rev-parse --show-toplevel")) . "/.tags")
-augroup END
+" augroup Tags
+"     autocmd!
+"     autocmd VimEnter * call SetTags(trim(system("git rev-parse --show-toplevel")) . "/.tags")
+"     autocmd DirChanged * call SetTags(trim(system("git rev-parse --show-toplevel")) . "/.tags")
+" augroup END
 
 autocmd! BufRead "*.md" :set linewidth=80
 autocmd! BufWritePre "*.md" :execute "normal! mygggqG'y"
@@ -399,16 +338,3 @@ if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
-
-" 🐓 Coq completion settings
-
-" Set recommended to false
-let g:coq_settings = { "keymap.recommended": v:false }
-
-" Keybindings
-ino <silent><expr> <Esc>   pumvisible() ? "\<C-e><Esc>" : "\<Esc>"
-ino <silent><expr> <C-c>   pumvisible() ? "\<C-e><C-c>" : "\<C-c>"
-ino <silent><expr> <BS>    pumvisible() ? "\<C-e><BS>"  : "\<BS>"
-ino <silent><expr> <CR>    pumvisible() ? (complete_info().selected == -1 ? "\<C-e><CR>" : "\<C-y>") : "\<C-l>"
-ino <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-ino <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<BS>"
