@@ -11,3 +11,6 @@ for file in "${files[@]}"; do
         && ln -sf ~/dotfiles/"$file" ~/"$file" \
         && echo done
 done
+||||||| parent of 920fa00 (Add install script--untested.)
+echo "All possible dotfiles linked"
+echo "Done 🤘🏼"
