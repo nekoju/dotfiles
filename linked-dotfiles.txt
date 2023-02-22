@@ -1,0 +1,13 @@
+.bashrc
+bin
+.gitconfig
+.config
+.gitaliases
+.gitignore_global
+.ipython
+.tmux
+.tmux.conf
+.tmux.conf.d
+.vimrc
+.zsh
+.zshrc
