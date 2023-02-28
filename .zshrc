@@ -1,5 +1,3 @@
-alias vi "vim -u ~/dotfiles/.vimrc"
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -73,8 +71,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git vi-mode)
 
-source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -100,9 +96,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-eval "$(oh-my-posh init --config '~/.zsh/theme/dracula.omp.json' zsh)"
+alias vi "vim -u ~/dotfiles/.vimrc"
 
-ZSH_THEME="dracula"
+ZSH_THEME="amuse"
 plugins=(git vi-mode)
 
 tmux attach-session
