@@ -1,3 +1,5 @@
+alias vi "vim -u ~/dotfiles/.vimrc"
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -98,5 +100,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
 eval "$(oh-my-posh init --config '~/.zsh/theme/dracula.omp.json' zsh)"
+
+ZSH_THEME="dracula"
+plugins=(git vi-mode)
+
+tmux attach-session
