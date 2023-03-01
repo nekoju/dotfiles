@@ -3,9 +3,8 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-call plug#begin('~/.config/nvim/plugged/')
+call plug#begin()
 Plug 'andymass/vim-matchup'
-Plug 'chrisbra/csv.vim'
 Plug 'dracula/vim'
 " Plug 'dag/vim-fish'
 Plug 'elzr/vim-json'
@@ -17,7 +16,6 @@ Plug 'Konfekt/FastFold'
 "" Why won't this work?
 " Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'mpjuers/showcontext'
-Plug 'nathanaelkane/vim-indent-guides'
 "" To set up later
 " Plug 'spinks/vim-leader-guide'
 " Pragmatic folding for .py
@@ -84,8 +82,8 @@ nmap <silent> <leader>sk :leftabove new<CR>
 nmap <silent> <leader>sj :rightbelow new<CR>
 
 
-" Word count for latex
-noremap <silent> <F3> :w !detex \| wc -w<CR>
+" " Word count for latex
+" noremap <silent> <F3> :w !detex \| wc -w<CR>
 " show open buffers with f5
 noremap <silent> <F5> :buffers<CR>:buffer<Space>
 " open term window
@@ -307,15 +305,15 @@ let g:currentmode={
     \ 't'  : 'Terminal'
     \}
 
-set laststatus=2
-set noshowmode
-set statusline=
-set statusline+=%0*\ %n\                                 " Buffer number
-set statusline+=%0*\ %{toupper(g:currentmode[mode()])}\  " The current mode
-set statusline+=%1*\ %<%F%m%r%h%w\                       " File path, modified, readonly, helpfile, preview
-set statusline+=%2*\ %Y\                                 " FileType
-set statusline+=%5*\ %{FugitiveHead()}\ 
-set statusline+=%3*
+" set laststatus=2
+" set noshowmode
+" set statusline=
+" set statusline+=%0*\ %n\                                 " Buffer number
+" set statusline+=%0*\ %{toupper(g:currentmode[mode()])}\  " The current mode
+" set statusline+=%1*\ %<%F%m%r%h%w\                       " File path, modified, readonly, helpfile, preview
+" set statusline+=%2*\ %Y\                                 " FileType
+" set statusline+=%5*\ %{FugitiveHead()}\ 
+" set statusline+=%3*
 
 hi User1 ctermfg=007 ctermbg=239 guibg=#4e4e4e guifg=#adadad
 hi User2 ctermfg=007 ctermbg=236 guibg=#303030 guifg=#adadad

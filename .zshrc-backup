@@ -96,9 +96,9 @@ plugins=(git vi-mode)
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-# alias vi="vim -u ~/dotfiles/.vimrc"
-alias ssh='f() { ssh -t "$1" "bash -o vi" };f'
-
+alias vi "vim -u ~/dotfiles/.vimrc"
 
 ZSH_THEME="amuse"
 plugins=(git vi-mode)
+
+tmux attach-session
