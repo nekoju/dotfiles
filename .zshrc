@@ -97,7 +97,7 @@ plugins=(git vi-mode)
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias vi="vim -u ~/dotfiles/.vimrc"
-alias ssh='f() { ssh -t "$1" "bash -o vi" };f'
+alias sshvi='f() { ssh -t "$1" "bash -o vi" };f'
 
 
 ZSH_THEME="amuse"
