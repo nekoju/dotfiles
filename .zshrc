@@ -69,7 +69,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode)
 
 # User configuration
 
@@ -97,6 +96,9 @@ plugins=(git vi-mode)
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias vi="vim -u ~/dotfiles/.vimrc"
+plugins=(git)
+alias sshvi='f() { ssh -t "$1" "bash -o vi" };f'
+alias eyamlEdit='eyaml edit --pkcs7-private-key=/etc/puppetlabs/code/secrets/hiera/private_key.pkcs7.pem --pkcs7-public-key=/etc/puppetlabs/code/secrets/hiera/public_key.pkcs7.pem'
 ZSH_THEME="amuse"
 alias sshvi='f() { ssh -t "$1" "bash -o vi" };f'
 if grep '[skip|leap|jump]' <(hostname) &> /dev/null ; then
@@ -105,6 +107,3 @@ if grep '[skip|leap|jump]' <(hostname) &> /dev/null ; then
     ZSH_THEME="jonathon"
 fi
 bindkey -v
-
-
-plugins=(git vi-mode)
