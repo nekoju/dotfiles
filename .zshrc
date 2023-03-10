@@ -1,7 +1,8 @@
 alias vi "vim -u ~/dotfiles/.vimrc"
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=~/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -88,6 +89,7 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
+export BUILDDIR=/home/$USER/git/glue/compile/builder/componentbuild/
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

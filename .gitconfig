@@ -1,8 +1,9 @@
 [user]
 	name = Neko Juers
+	email = njuers@globalnoc.iu.edu
 [core]
 	excludesfile = /Users/nekoj/.gitignore_global
-	editor = nvim
+	editor = vim
 [alias]
 	tree = log --branches --remotes --tags --graph --decorate --pretty=oneline --abbrev-commit
 	tracked = !"git ls-tree -r \"$1\" --name-only #"
@@ -32,10 +33,3 @@
 	required = true
 [merge]
 	conflictstyle = diff3
-	tool = nvr
-[diff]
-    tool = nvr
-[difftool "nvr"]
-    cmd = nvr -s -d $LOCAL $REMOTE
-[mergetool "nvr"]
-    cmd = nvr -s -d $LOCAL $BASE $REMOTE $MERGED -c 'wincmd J | wincmd ='
