@@ -24,3 +24,4 @@ bin/ext4fuse
 .config/gtk-2.0
 .ipython/
 .tmux/plugins
+inventory
