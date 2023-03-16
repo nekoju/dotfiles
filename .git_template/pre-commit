@@ -1,0 +1,7 @@
+#!/bin/bash
+
+branch=$(git rev-parse --abbrev-ref HEAD)
+echo "Formatting python code using Black on branch $branch."
+black -l 79 $(git ls-tree -r "$branch" --name-only | grep ".*\.py")
+echo "Running unit tests."
+pytest
