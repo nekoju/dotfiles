@@ -104,6 +104,7 @@ alias sshvi='f() { ssh -t "$1" "bash -o vi" };f'
 if grep '[skip|leap|jump]' <(hostname) &> /dev/null ; then
     echo "Don't use sudo here asshole."
     alias sudo="echo Do NOT use sudo here asshole."
-    ZSH_THEME="jonathon"
+    ZSH_THEME="jonathan"
 fi
 bindkey -v
+source ~/.oh-my-zsh/oh-my-zsh.sh
