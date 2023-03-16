@@ -1,8 +1,9 @@
 require "paq" {
+    "savq/paq-nvim";
     "andymass/vim-matchup";
     "chrisbra/csv.vim";
     "dag/vim-fish";
-    "drewtempelmeyer/palenight.vim";
+    "dracula/vim";
     "elzr/vim-json";
     "fs111/pydoc.vim";
     "jeffkreeftmeijer/vim-numbertoggle";
@@ -13,10 +14,9 @@ require "paq" {
     "Konfekt/FastFold";
     "lervag/vimtex";
     "mpjuers/showcontext";
-    'nathanaelkane/vim-indent-guides';
+    "nathanaelkane/vim-indent-guides";
     "neovim/nvim-lspconfig";
     "tmhedberg/SimpylFold";
-    "savq/paq-nvim";
     "tpope/vim-commentary";
     "tpope/vim-fugitive";
     "tpope/vim-surround";
@@ -102,8 +102,8 @@ for i, map in ipairs(maps) do vim.api.nvim_set_keymap(map[1], map[2], map[3], ma
 
 -- status bar colors
 local o = vim.o
-local activestatus = "%#DiffAdd#"
-local inactivestatus = "%#TermCursor# %n %#SpellCap# %<%F%m%r%h%w %#TermCursor#"
+local activestatus = "%#DraculaOrangeInverse#"
+local inactivestatus = "%#DraculaCyan# %n %#SpellCap# %<%F%m%r%h%w %#DraculaToDo#"
 local venv = vim.api.nvim_eval([[
     substitute(system("bash -c 'venv=${VIRTUAL_ENV%/*} \\
     && echo ${venv##*/}'"), "\n", "", "g")
@@ -116,7 +116,7 @@ statusline = statusline .. activestatus .. " %{toupper(g:currentmode[mode()])} "
 statusline = statusline .. "%#SpellCap# %<%{expand('%:~:.')}%m%r%h%w "                       	-- File path, modified, readonly, helpfile, preview
 statusline = statusline .. "%#TermCursorNC# %Y "                                 	-- FileType
 statusline = statusline .. activestatus .. " %{FugitiveHead()} | "statusline = statusline .. activestatus .. venv
-statusline = statusline .. " | %#SpellCap#"
+statusline = statusline .. " | %#DraculaSearch#"
 o.statusline = statusline
 -- autocommand
 
@@ -141,8 +141,6 @@ for i, cmd in ipairs(autocmds) do vim.api.nvim_create_autocmd(cmd[1], cmd[2]) en
 local set = vim.opt
 
 -- colors
-set.background = "dark"
-vim.cmd("colorscheme palenight")
 
 --settings
 vim.cmd([[
@@ -181,12 +179,11 @@ vim.g.tex_fold_enabled = 1
 vim.g.sh_fold_enabled = 5
 vim.g.loaded_matchit = 1
 vim.g.neoterm_autoscroll = 1
-vim.g.python3_host_prog = "/usr/local/bin/python3"
+vim.g.python3_host_prog = "/usr/bin/python3"
 vim.g.indent_guides_enable_on_vim_startup = 1
 vim.g.pydoc_cmd = 'python -m pydoc' 
 vim.g.indent_guides_guide_size = 1
 
-set.termguicolors = true
 -- set.background = "dark"
 set.autoread = true
 set.inccommand = "nosplit"
@@ -219,6 +216,9 @@ set.showmode = false
 vim.cmd("set formatoptions-=c formatoptions-=r formatoptions-=o")
 vim.cmd("set sessionoptions-=folds")
 
+set.termguicolors = true
+set.background = "dark"
+vim.cmd("colorscheme dracula")
 
 
 vim.api.nvim_create_augroup("marks", {clear = True})

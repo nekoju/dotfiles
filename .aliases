@@ -1,0 +1,31 @@
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls="ls --color=auto"
+
+    alias grep="grep --color=auto"
+    alias fgrep="fgrep --color=auto"
+    alias egrep="egrep --color=auto"
+fi
+
+alias ll="ls -alF"
+alias la="ls -A"
+alias l="ls -CF"
+
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+change-terminal-font () {
+    [[ -z "${1}" || -z "${2}" ]] && echo "Usage: change-terminal-font FROM_SIZE TO_SIZE"
+
+    local from="${1}"
+    local to="${2}"
+    local windows_user="$(powershell.exe '$env:UserName' | sed -e 's/\r//g')"
+    local terminal_config="/c/Users/${windows_user}/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
+
+    perl -i -pe "s/\"fontSize\": ${from}/\"fontSize\": ${to}/g" "${terminal_config}"
+}
+
+alias diff="diff --color -u"
+
+alias 755d="find . -type d -exec chmod 755 {} \;"
+
+alias 644f="find . -type f -exec chmod 644 {} \;"
