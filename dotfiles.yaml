@@ -1,0 +1,30 @@
+---
+- name: Dotfiles
+  hosts: list
+  tasks:
+   - name: Clone dotfiles
+     ansible.builtin.git:
+      repo: https://github.com/nekoju/dotfiles.git
+      dest: ~/dotfiles
+      depth: 3
+      single_branch: true
+      version: servers
+   - name: Remove existing dotfiles
+     ansible.builtin.file:
+      path: "{{ item.dest }}"
+      state: absent
+   - name: Symlink relevant dotfiles
+     ansible.builtin.file:
+      src: "{{ item.src }}"
+      dest: "{{ item.dest }}"
+      owner: njuers
+      group: njuers
+      state: link
+     loop:
+      - src: ~/dotfiles/.vimrc
+        dest: ~/.vimrc
+      - src: ~/dotfiles/.zshrc
+        dest: ~/.zshrc
+      - src: ~/dotfiles/.gitconfig
+        dest: ~/.gitconfig
+...
