@@ -38,6 +38,14 @@ require "paq" {
 }
 
 local maps = {
+    {"n", "<C-f>f", ":GFiles<CR>", {noremap=true}},
+    {"n", "<C-f>b", ":Buffers<CR>", {noremap=true}},
+    {"n", "<C-f>t", ":Tags<CR>", {noremap=true}},
+    {"n", "<C-f>m", ":Marks<CR>", {noremap=true}},
+    {"n", "<C-f>w", ":Windows<CR>", {noremap=true}},
+    {"n", "<C-f>s", ":Snippets<CR>", {noremap=true}},
+    {"n", "<C-f>c", ":Commits<CR>", {noremap=true}},
+    {"n", "<C-f><C-c>", ":Commands<CR>", {noremap=true}},
     {"i", "((", "()<left>", {noremap=true}},
     {"i", "[[", "[]<left>", {noremap=true}},
     {"i", "{{", "{}<left>", {noremap=true}},
