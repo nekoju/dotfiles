@@ -56,6 +56,4 @@ fi
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
-# User specific aliases and functions
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export PATH=$PATH:~/.gitaliases
