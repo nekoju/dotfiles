@@ -99,7 +99,7 @@ export BUILDDIR=/home/$USER/git/glue/compile/builder/componentbuild/
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias vi="vim -u ~/dotfiles/.vimrc"
-ZSH_THEME="essembeh"
+ZSH_THEME="fino-time"
 alias sshvi='f() { ssh -t "$1" "bash -o vi" };f'
 if egrep '(skip|leap|jump)' <(hostname) &> /dev/null ; then
     echo "Don't use sudo here asshole."
