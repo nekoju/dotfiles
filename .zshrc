@@ -99,14 +99,15 @@ export BUILDDIR=/home/$USER/git/glue/compile/builder/componentbuild/
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias vi="vim -u ~/dotfiles/.vimrc"
-ZSH_THEME="amuse"
+ZSH_THEME="essembeh"
 alias sshvi='f() { ssh -t "$1" "bash -o vi" };f'
-if grep '[skip|leap|jump]' <(hostname) &> /dev/null ; then
+if egrep '(skip|leap|jump)' <(hostname) &> /dev/null ; then
     echo "Don't use sudo here asshole."
     alias sudo="echo Do NOT use sudo here asshole."
-    ZSH_THEME="jonathon"
+    ZSH_THEME="jonathan"
 fi
 bindkey -v
 
 
 plugins=(git vi-mode)
+source ~/.oh-my-zsh/oh-my-zsh.sh
