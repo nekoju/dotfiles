@@ -24,3 +24,6 @@
 	rebase = preserve
 [include]
     path = ~/.gitaliases/*
+[merge]
+	conflictstyle = diff3
+	mergetool = vimdiff
