@@ -128,7 +128,7 @@ noremap <leader>bl :call Toggle_black_running()<CR>
 fu! InlineRead(command)
     let colnum = col('.')
     let line = getline('.')
-    call setline('.', strpart(line, 0, colnum) . system(a:command) . strpart(line, colnum))
+    call setline('.', strpart(line, 0, colnum) . substitute(system(a:command)[:-2], '\n', '; ', 'g') . strpart(line, colnum))
 endfu
 
 command! -nargs=1 IRead call InlineRead(<f-args>)

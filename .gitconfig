@@ -2,7 +2,7 @@
 	name = Neko Juers
 	email = neko.juers@gmail.com
 [core]
-	excludesfile = /Users/nekoj/.gitignore_global
+	excludesfile = /home/njuers/.gitignore_global
 	editor = vim
 [alias]
 	tree = log --branches --remotes --tags --graph --decorate --pretty=oneline --abbrev-commit
