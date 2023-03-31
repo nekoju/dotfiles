@@ -18,6 +18,7 @@ Plug 'Konfekt/FastFold'
 " Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'mpjuers/showcontext'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'pangloss/vim-javascript'
 "" To set up later
 " Plug 'spinks/vim-leader-guide'
 " Pragmatic folding for .py
