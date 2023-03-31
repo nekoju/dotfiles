@@ -94,7 +94,8 @@ spoon.EjectMenu:bindHotkeys({ejectAll = {hyper2, 'e'}})
 
 --
 -- Requires an API Access Token from Bit.ly
-local BITLY_API_ACCESS_TOKEN = "e72c99ea3cd57861e530b5388de556297c49f736"
+local BITLY_API_ACCESS_TOKEN = "f85e1749e467332438683cb2e38aaf399afc878a"
+-- local BITLY_API_ACCESS_TOKEN = "e72c99ea3cd57861e530b5388de556297c49f736"
 
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "S", function()
 	local board = hs.pasteboard.getContents()
@@ -135,3 +136,71 @@ hs.hotkey.bind({"ctrl", "shift"}, "space", function()
         hs.application.launchOrFocus("kitty")
     end
 end)
+
+-- from https://shantanugoel.com/2020/08/21/hammerspoon-multiscreen-window-layout-macos/
+
+local laptopScreen = "Built-in Display"
+local mainMonitor = "DELL P417Q"
+
+-- Define position values that don't exist by default in hs.layout.*
+local positions = {
+  leftTop = {x=0, y=0, w=1 / 3, h=1.0},
+  terminal = {x=1 / 3, y=0, w=2 / 3, h=2 / 3},
+  middleBottom = {x=1 / 3, y=2 / 3, w=1 / 3, h=1 / 3},
+  rightBottom = {x=2 / 3, y=2 / 3, w=1 / 3, h=1 / 3}
+}
+
+local layoutDoubleScreen= {
+  {"iTerm2", nil, mainMonitor, positions.terminal, nil, nil},
+  {"Firefox", nil, mainMonitor, positions.leftTop, nil, nil},
+  {"Slack", nil, mainMonitor, positions.middleBottom, nil, nil},
+  {"Microsoft Outlook", nil, mainMonitor, positions.rightBottom, nil, nil},
+  {"Motion", nil, laptopScreen, hs.layout.maximized, nil, nil},
+  {"Obsidian", nil, laptopScreen, hs.layout.maximized, nil, nil},
+}
+
+local layoutSingleScreen = {
+  {"iTerm2", nil, laptopScreen, hs.layout.maximized, nil, nil},
+  {"Firefox", nil, laptopScreen, hs.layout.maximized, nil, nil},
+  {"Slack", nil, laptopScreen, hs.layout.maximized, nil, nil},
+  {"Microsoft Outlook", nil, laptopScreen, hs.layout.maximized, nil, nil},
+}
+
+local appNames = {
+  "iTerm2",
+  "Firefox",
+  "Microsoft Outlook",
+  "Slack",
+  "Signal",
+}
+
+local function launchApps()
+  for i, appName in ipairs(appNames) do
+    hs.application.launchOrFocus(appName)
+  end
+end
+
+local menu = hs.menubar.new()
+local function setDoubleScreen()
+  menu:setTitle("🖥 2")
+  menu:setTooltip("Double Screen Layout")
+  hs.layout.apply(layoutDoubleScreen)
+end
+local function setSingleScreen()
+  menu:setTitle("🖥 1")
+  menu:setTooltip("Single Screen Layout")
+  hs.layout.apply(layoutSingleScreen)
+end
+
+
+local function enableMenu()
+  menu:setTitle("🖥")
+  menu:setTooltip("No Layout")
+  menu:setMenu({
+      { title = "Launch Apps", fn = launchApps },
+      { title = "Set Double Screen Layout", fn = setDoubleScreen},
+      { title = "Set Single Screen Layout", fn = setSingleScreen},
+  })
+end
+
+enableMenu()
