@@ -1,8 +1,8 @@
 [user]
 	name = Neko Juers
-	email = neko.juers@gmail.com
+	email = njuers@globalnoc.iu.edu
 [core]
-	excludesfile = /Users/nekoj/.gitignore_global
+	excludesfile = /home/njuers/.gitignore_global
 [alias]
 	tree = log --branches --remotes --tags --graph --decorate --pretty=oneline --abbrev-commit
 	tracked = !"git ls-tree -r \"$1\" --name-only #"
@@ -27,3 +27,6 @@
 [merge]
 	conflictstyle = diff3
 	mergetool = vimdiff
+[safe]
+	directory = /etc/puppetlabs/code/environments/production/hieradat
+	directory = /etc/puppetlabs/code/environments/production/hieradata

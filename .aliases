@@ -29,3 +29,5 @@ alias diff="diff --color -u"
 alias 755d="find . -type d -exec chmod 755 {} \;"
 
 alias 644f="find . -type f -exec chmod 644 {} \;"
+
+alias mypuppet="cd /etc/puppetlabs/code/environments/njuers/"
