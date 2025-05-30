@@ -1,6 +1,6 @@
 [user]
 	name = Neko Juers
-	email = neko.juers@gmail.com
+	email = njuers@globalnoc.iu.edu
 [core]
 	excludesfile = /home/njuers/.gitignore_global
 	editor = vim
@@ -33,19 +33,19 @@
 	required = true
 [merge]
 	conflictstyle = diff3
-	tool = nvr
+# 	tool = nvr
 [diff]
-    tool = nvr
-[difftool "nvr"]
-    cmd = nvr -s -d $LOCAL $REMOTE
-[mergetool "nvr"]
-    cmd = nvr -s -d $LOCAL $BASE $REMOTE $MERGED -c 'wincmd J | wincmd ='
+#     tool = nvr
+# [difftool "nvr"]
+#     cmd = nvr -s -d $LOCAL $REMOTE
+# [mergetool "nvr"]
+#     cmd = nvr -s -d $LOCAL $BASE $REMOTE $MERGED -c 'wincmd J | wincmd ='
 [include]
     path = ~/.gitaliases/*
-	tool = nvr
+# 	tool = nvr
 [diff]
-    tool = nvr
-[difftool "nvr"]
-    cmd = nvr -s -d $LOCAL $REMOTE
-[mergetool "nvr"]
-    cmd = nvr -s -d $LOCAL $BASE $REMOTE $MERGED -c 'wincmd J | wincmd ='
+#     tool = nvr
+# [difftool "nvr"]
+#     cmd = nvr -s -d $LOCAL $REMOTE
+# [mergetool "nvr"]
+#     cmd = nvr -s -d $LOCAL $BASE $REMOTE $MERGED -c 'wincmd J | wincmd ='

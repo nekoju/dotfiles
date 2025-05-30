@@ -44,7 +44,18 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
 export PATH=$PATH:~/.gitaliases
+export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.cargo/bin
+export PATH=$PATH:~/bin
+export DOC_TOKEN=$(cat ~/.doc_token)
+export DOC_HOST=njuers8-dev.grnoc.iu.edu
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_work
